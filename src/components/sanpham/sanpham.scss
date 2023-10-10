@@ -1,0 +1,20 @@
+#sanPham {
+  margin: 30px 0;
+  padding-bottom: 50px;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #sanPham {
+    margin: 30px 0;
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+}

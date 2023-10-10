@@ -1,0 +1,298 @@
+.sanPhamItem {
+  width: 185px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: relative;
+  .hinhAnh {
+    width: 100%;
+    height: 145px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .text {
+    .tenSp {
+      margin-top: 10px;
+      height: 45px;
+      p {
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+    .giaSp {
+      display: flex;
+      justify-content: space-between;
+      p.giaGiam {
+        color: red;
+        font-size: 15px;
+        font-weight: 400;
+      }
+      p.giaBan {
+        color: rgb(195, 195, 195);
+        text-decoration: line-through;
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+    .tangGiam {
+      margin: 10px auto 0;
+      width: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10;
+      i.giam {
+        border: 1px solid rgb(195, 195, 195);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        line-height: 19px;
+        text-align: center;
+        color: rgb(195, 195, 195);
+        cursor: pointer;
+      }
+      p.soLuong {
+        margin: 0 10px;
+        width: 60px;
+        height: 22px;
+        line-height: 22px;
+        padding: 0 10px;
+        background-color: rgb(255, 233, 233);
+        color: black;
+        text-align: center;
+        border-radius: 24px;
+      }
+      i.tang {
+        border: 1px solid rgb(195, 195, 195);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        line-height: 19px;
+        text-align: center;
+        background-color: rgb(195, 195, 195);
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .addToCart {
+      margin-top: 10px;
+      button {
+        background-color: red;
+        color: white;
+        border: none;
+        height: 24px;
+        width: 100%;
+        border-radius: 24px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 400;
+        &:hover {
+          background-color: rgb(240, 10, 10);
+        }
+      }
+    }
+    .tamHet {
+      margin-top: 10px;
+      button {
+        background-color: rgb(195, 195, 195);
+        color: white;
+        border: none;
+        height: 24px;
+        width: 100%;
+        border-radius: 24px;
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+    .phanTram {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      background-color: red;
+      border-radius: 10px 0 10px 0;
+      p {
+        color: white;
+        text-align: center;
+      }
+    }
+    .heart {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+
+      i {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: rgba(192, 192, 192, 0.3);
+      }
+    }
+    .gif {
+      position: absolute;
+      top: 35px;
+      right: 5px;
+      cursor: pointer;
+
+      i {
+        color: green;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: rgba(192, 192, 192, 0.3);
+      }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .sanPhamItem {
+    width: 100%;
+    padding: 0 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    .hinhAnh {
+      width: 110px;
+      height: 110px;
+      padding: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text {
+      width: 100%;
+      padding: 20px;
+      .tenSp {
+        height: 45px;
+        p {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+      .giaSp {
+        display: flex;
+        justify-content: space-between;
+        p.giaGiam {
+          color: red;
+        }
+        p.giaBan {
+          color: rgb(195, 195, 195);
+          text-decoration: line-through;
+        }
+      }
+      .tangGiam {
+        margin: 10px auto 0;
+        width: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10;
+        i.giam {
+          border: 1px solid rgb(195, 195, 195);
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          line-height: 17px;
+          text-align: center;
+          color: rgb(195, 195, 195);
+          cursor: pointer;
+        }
+        p.soLuong {
+          margin: 0 10px;
+          width: 60px;
+
+          height: 20px;
+          line-height: 20px;
+          padding: 0 10px;
+          background-color: rgb(255, 233, 233);
+          color: black;
+          text-align: center;
+          border-radius: 20px;
+        }
+        i.tang {
+          border: 1px solid rgb(195, 195, 195);
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          line-height: 17px;
+          text-align: center;
+          background-color: rgb(195, 195, 195);
+          color: white;
+          cursor: pointer;
+        }
+      }
+      .addToCart {
+        margin-top: 10px;
+        button {
+          background-color: red;
+          color: white;
+          border: none;
+          height: 24px;
+          width: 100%;
+          border-radius: 24px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 400;
+          &:hover {
+            background-color: rgb(240, 10, 10);
+          }
+        }
+      }
+      .phanTram {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        background-color: red;
+        border-radius: 10px 0 10px 0;
+        p {
+          color: white;
+          text-align: center;
+        }
+      }
+      .heart {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+
+        i {
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          text-align: center;
+          border-radius: 50%;
+          background-color: rgba(192, 192, 192, 0.3);
+        }
+      }
+      .gif {
+        position: absolute;
+        top: 5px;
+        right: 35px;
+        cursor: pointer;
+
+        i {
+          color: green;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          text-align: center;
+          border-radius: 50%;
+          background-color: rgba(192, 192, 192, 0.3);
+        }
+      }
+    }
+  }
+}

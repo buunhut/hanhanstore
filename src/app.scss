@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 1160px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 985px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    width: 790px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 595px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  #gioHang {
+    width: 100%;
+    .top {
+      i {
+        color: red;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
