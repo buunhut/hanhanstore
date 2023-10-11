@@ -86,7 +86,7 @@ const TimKiem = () => {
                         <div className="inputItem">
                             <input
                                 type="text"
-                                placeholder="Nhập tên sản phẩm cần tìm"
+                                placeholder="Nhập tên sản phẩm...,"
                                 autoFocus
                                 value={keyword}
                                 onChange={handleKeyword}

@@ -8,10 +8,24 @@
   }
 }
 
+@media screen and (max-width: 576px) {
+  #sanPham {
+    margin: 30px 0;
+    .content {
+      width: 400px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 auto;
+    }
+  }
+}
 @media screen and (max-width: 400px) {
   #sanPham {
     margin: 30px 0;
     .content {
+      width: 100%;
+
       display: flex;
       flex-wrap: wrap;
       gap: 10px;

@@ -41,7 +41,7 @@ const Search = () => {
                         <NavLink to="tim-kiem">
                             <input
                                 type="text"
-                                placeholder="Nhập tên sản phẩm cần tìm...,"
+                                placeholder="Bạn muốn tìm gì hôm nay"
                             />
                         </NavLink>
                         <i className="fa-solid fa-magnifying-glass glass"></i>

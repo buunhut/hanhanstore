@@ -107,6 +107,8 @@
         background-color: red;
         color: white;
         border-radius: 8px;
+        font-size: 15px;
+        font-weight: 400;
         cursor: pointer;
         &:hover {
           background-color: rgb(240, 10, 10);
@@ -235,7 +237,8 @@
         background-color: red;
         color: white;
         border-radius: 8px;
-        font-size: 18px;
+        font-size: 20px;
+        font-weight: 500;
         cursor: pointer;
         &:hover {
           background-color: rgb(240, 10, 10);
