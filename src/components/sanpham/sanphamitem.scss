@@ -119,24 +119,24 @@
         text-align: center;
       }
     }
-    .heart {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      cursor: pointer;
+    // .heart {
+    //   position: absolute;
+    //   top: 5px;
+    //   right: 5px;
+    //   cursor: pointer;
 
-      i {
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        text-align: center;
-        border-radius: 50%;
-        background-color: rgba(192, 192, 192, 0.3);
-      }
-    }
+    //   i {
+    //     width: 25px;
+    //     height: 25px;
+    //     line-height: 25px;
+    //     text-align: center;
+    //     border-radius: 50%;
+    //     background-color: rgba(192, 192, 192, 0.3);
+    //   }
+    // }
     .gif {
       position: absolute;
-      top: 35px;
+      top: 5px;
       right: 5px;
       cursor: pointer;
 

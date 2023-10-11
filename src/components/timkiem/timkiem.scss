@@ -103,9 +103,10 @@
         .text {
           width: 100%;
           .tenSp {
+            height: 40px;
             p {
               font-size: 16px;
-              font-weight: 500;
+              font-weight: 400;
             }
           }
           .giaSp {
@@ -201,19 +202,19 @@
             }
           }
         }
-        .heart {
-          position: absolute;
-          top: 2px;
-          right: 2px;
-          i {
-            width: 25px;
-            height: 25px;
-            line-height: 25px;
-            text-align: center;
-            border-radius: 50%;
-            background-color: rgba(192, 192, 192, 0.3);
-          }
-        }
+        // .heart {
+        //   position: absolute;
+        //   top: 2px;
+        //   right: 2px;
+        //   i {
+        //     width: 25px;
+        //     height: 25px;
+        //     line-height: 25px;
+        //     text-align: center;
+        //     border-radius: 50%;
+        //     background-color: rgba(192, 192, 192, 0.3);
+        //   }
+        // }
         .phanTram {
           position: absolute;
           top: 0;
@@ -229,7 +230,7 @@
         .gif {
           position: absolute;
           top: 2px;
-          right: 32px;
+          right: 2px;
           i {
             width: 25px;
             height: 25px;

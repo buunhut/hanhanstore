@@ -80,9 +80,9 @@ const SanPhamItem = ({ item, inCart }) => {
         <div className="phanTram">
           <p>{giaGiam > 0 ? phanTram + "%" : null}</p>
         </div>
-        <div className="heart">
+        {/* <div className="heart">
           <i className="fa-regular fa-heart"></i>
-        </div>
+        </div> */}
         {
           gif > 0 ? (
             <div className="gif">

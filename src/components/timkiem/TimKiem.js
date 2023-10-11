@@ -187,9 +187,9 @@ const TimKiem = () => {
                                                     )}
                                                 </div>
                                             </div>
-                                            <div className="heart">
+                                            {/* <div className="heart">
                                                 <i className="fa-regular fa-heart"></i>
-                                            </div>
+                                            </div> */}
                                             <div className="phanTram">
                                                 <p>{giaGiam > 0 ? phanTram + "%" : null}</p>
                                             </div>
