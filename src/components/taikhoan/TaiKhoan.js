@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './taikhoan.scss'
 import { NavLink } from 'react-router-dom'
+import Footer from '../dungchung/Footer.js'
+
 
 const TaiKhoan = () => {
     const [dangKy, setDangKy] = useState(false)
@@ -11,7 +13,7 @@ const TaiKhoan = () => {
 
     return (
         <div id='taiKhoan'>
-            <header>
+            <div id="header">
                 <div className="container">
                     <div className="content">
                         <NavLink to="/">
@@ -22,66 +24,68 @@ const TaiKhoan = () => {
 
                     </div>
                 </div>
+            </div>
+            <div id="main">
+                <div className="container">
+                    <div className="content">
+                        {
+                            dangKy ? (
+                                <>
+                                    <h3>Đăng ký tài khoản</h3>
+                                    <div className="myForm">
+                                        <form action="">
+                                            <div className="inputItem">
+                                                <input type="text" placeholder='Tên người dùng' />
+                                                <i className="fa-solid fa-user"></i>
+                                            </div>
+                                            <div className="inputItem">
+                                                <input type="text" placeholder='Số điện thoại' />
+                                                <i className="fa-solid fa-phone"></i>
+                                            </div>
+                                            <div className="inputItem">
+                                                <input type="text" placeholder='Địa chỉ' />
+                                                <i className="fa-solid fa-location-dot"></i>
+                                            </div>
+                                            <div className="myBtn">
+                                                <button type='button'> Đăng ký</button>
+                                            </div>
+                                            <p onClick={handleShowDangKy}>
+                                                Quay về trang đăng nhập
+                                            </p>
 
-            </header>
-            <div className="container">
-                <div className="content">
-                    {
-                        dangKy ? (
-                            <>
-                                <h3>Đăng ký tài khoản</h3>
-                                <div className="myForm">
-                                    <form action="">
-                                        <div className="inputItem">
-                                            <input type="text" placeholder='Tên người dùng' />
-                                            <i className="fa-solid fa-user"></i>
-                                        </div>
+                                        </form>
+
+                                    </div>
+
+                                </>
+                            ) : (
+                                <>
+                                    <h3>Đăng nhập</h3>
+                                    <div className="myForm">
                                         <div className="inputItem">
                                             <input type="text" placeholder='Số điện thoại' />
                                             <i className="fa-solid fa-phone"></i>
-                                        </div>
-                                        <div className="inputItem">
-                                            <input type="text" placeholder='Địa chỉ' />
-                                            <i className="fa-solid fa-location-dot"></i>
+
+
                                         </div>
                                         <div className="myBtn">
-                                            <button type='button'> Đăng ký</button>
+                                            <button type='button'> Đăng nhập</button>
                                         </div>
                                         <p onClick={handleShowDangKy}>
-                                            Quay về trang đăng nhập
+                                            Chưa có tài khoản, đăng ký ngay
                                         </p>
 
-                                    </form>
-
-                                </div>
-
-                            </>
-                        ) : (
-                            <>
-                                <h3>Đăng nhập</h3>
-                                <div className="myForm">
-                                    <div className="inputItem">
-                                        <input type="text" placeholder='Số điện thoại' />
-                                        <i className="fa-solid fa-phone"></i>
-
-
                                     </div>
-                                    <div className="myBtn">
-                                        <button type='button'> Đăng nhập</button>
-                                    </div>
-                                    <p onClick={handleShowDangKy}>
-                                        Chưa có tài khoản, đăng ký ngay
-                                    </p>
+                                </>
+                            )
 
-                                </div>
-                            </>
-                        )
-
-                    }
+                        }
 
 
+                    </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
