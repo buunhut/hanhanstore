@@ -2,8 +2,8 @@
   #header {
     position: sticky;
     top: 0;
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
     padding: 0 20px;
     background-color: red;
     z-index: 400;
@@ -35,13 +35,13 @@
         }
         i.glass {
           position: absolute;
-          top: 18px;
+          top: 22px;
           left: 8px;
           color: red;
         }
         i.close {
           position: absolute;
-          top: 18px;
+          top: 22px;
           right: 8px;
           color: rgb(195, 195, 195);
           cursor: pointer;

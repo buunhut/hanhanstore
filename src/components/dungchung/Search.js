@@ -17,17 +17,6 @@ const Search = () => {
     const sumThanhTien = gioHang.reduce((total, item) => {
         return total + item.thanhTien;
     }, 0);
-    // const clickSearch = () => {
-    //     dispath(clickInput());
-    // };
-
-    // const handleBack = () => {
-    //     dispath(offBack());
-    // };
-    // const timKiemSanPham = (event) => {
-    //     let keyword = event.target.value;
-    //     dispath(nhapNoiDung(keyword));
-    // };
     const [showGioHang, setShowGioHang] = useState(false);
     const handleGioHang = () => {
         setShowGioHang(!showGioHang);
