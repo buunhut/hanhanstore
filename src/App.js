@@ -21,12 +21,7 @@ function App() {
         </Route>
         <Route path="/tim-kiem" element={<TimKiem />} />
         <Route path="/tai-khoan" element={<TaiKhoan />} />
-
-
-
       </Routes>
-
-
     </BrowserRouter>
   );
 }
