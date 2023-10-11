@@ -1,7 +1,9 @@
 #myCarousel {
-  background-color: white;
+  background-color: rgba(255, 79, 79, 0.641);
+  background: linear-gradient(to bottom, red, orange);
+
   margin-bottom: 30px;
-  //   padding: 0 10px;
+  padding: 10px;
   width: 100%;
   .slider-items {
     .item {
@@ -12,12 +14,11 @@
     }
   }
 }
-
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   #myCarousel {
     margin-bottom: 30px;
-    // padding: 10px 0;
-    width: 380px;
+    padding: 10px;
+    // width: 380px;
     margin: 0 auto;
     .slider-items {
       display: flex;
@@ -32,20 +33,190 @@
     }
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   #myCarousel {
     margin-bottom: 30px;
-    // padding: 10px 0;
-    width: 100%;
+    padding: 10px;
+    // width: 380px;
+    margin: 0 auto;
     .slider-items {
       display: flex;
       justify-content: space-between;
       align-items: center;
       .item {
         width: 185px;
-        // height: 272px;
+        height: 272px;
         background-color: white;
         border: 1px solid red;
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  #myCarousel {
+    margin-bottom: 30px;
+    padding: 10px;
+    // width: 380px;
+    margin: 0 auto;
+    .slider-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      //   .item {
+      //     width: 185px;
+      //     height: 272px;
+      //     background-color: white;
+      //     border: 1px solid red;
+      //   }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  #myCarousel {
+    margin-bottom: 30px;
+    padding: 10px;
+    width: 100%;
+    .slider-items {
+      .sanPhamItem {
+        width: 185px;
+        height: 272px;
+        padding: 5px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        position: relative;
+        display: block;
+        .hinhAnh {
+          width: 100%;
+          height: 145px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .text {
+          .tenSp {
+            margin-top: 0px;
+            height: 40px;
+            p {
+              font-size: 14px;
+              font-weight: 400;
+            }
+          }
+          .giaSp {
+            display: flex;
+            justify-content: space-between;
+            p.giaGiam {
+              color: red;
+              font-size: 15px;
+              font-weight: 400;
+            }
+            p.giaBan {
+              color: rgb(195, 195, 195);
+              text-decoration: line-through;
+              font-size: 15px;
+              font-weight: 400;
+            }
+          }
+          .tangGiam {
+            margin: 10px auto 0;
+            width: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10;
+            i.giam {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 22px;
+              height: 22px;
+              line-height: 19px;
+              text-align: center;
+              color: rgb(195, 195, 195);
+              cursor: pointer;
+            }
+            p.soLuong {
+              margin: 0 10px;
+              width: 60px;
+              height: 22px;
+              line-height: 22px;
+              padding: 0 10px;
+              background-color: rgb(255, 233, 233);
+              color: black;
+              text-align: center;
+              border-radius: 24px;
+            }
+            i.tang {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 22px;
+              height: 22px;
+              line-height: 19px;
+              text-align: center;
+              background-color: rgb(195, 195, 195);
+              color: white;
+              cursor: pointer;
+            }
+          }
+          .addToCart {
+            margin-top: 10px;
+            button {
+              background-color: red;
+              color: white;
+              border: none;
+              height: 24px;
+              width: 100%;
+              border-radius: 24px;
+              font-size: 15px;
+              font-weight: 400;
+              cursor: pointer;
+              &:hover {
+                background-color: rgb(240, 10, 10);
+              }
+            }
+          }
+          .tamHet {
+            margin-top: 10px;
+            button {
+              background-color: rgb(195, 195, 195);
+              color: white;
+              border: none;
+              height: 24px;
+              width: 100%;
+              border-radius: 24px;
+              font-size: 15px;
+              font-weight: 400;
+            }
+          }
+          .phanTram {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            background-color: red;
+            border-radius: 10px 0 10px 0;
+            p {
+              color: white;
+              text-align: center;
+            }
+          }
+          .gif {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+
+            i {
+              color: green;
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              text-align: center;
+              border-radius: 50%;
+              background-color: rgba(192, 192, 192, 0.3);
+            }
+          }
+        }
       }
     }
   }

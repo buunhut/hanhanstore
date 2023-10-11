@@ -1,9 +1,15 @@
 #sanPham {
   margin: 30px 0;
   padding-bottom: 50px;
+
   h2 {
     margin-bottom: 10px;
+    background: linear-gradient(to bottom, red, orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+
   .content {
     display: flex;
     flex-wrap: wrap;

@@ -10,7 +10,7 @@ import SanPhamItem from '../sanpham/SanPhamItem';
 
 const MyCarousel = () => {
     const options = {
-        margin: 10,
+        margin: 100,
         responsiveClass: true,
         nav: false,
         autoplay: true,
@@ -20,6 +20,9 @@ const MyCarousel = () => {
         responsive: {
             0: {
                 items: 2,
+            },
+            500: {
+                items: 3,
             },
             576: {
                 items: 3,
