@@ -7,9 +7,9 @@ import { giamSoLuong, tangSoLuong, xoaDatHang } from "../../redux/gioHangSlice";
 
 const Search = () => {
     const dispath = useDispatch();
-    const { back, clear, keyword, ketQua } = useSelector(
-        (state) => state.timKiem
-    );
+    // const { back, clear, keyword, ketQua } = useSelector(
+    //     (state) => state.timKiem
+    // );
     const { gioHang } = useSelector((state) => state.gioHang);
     const sumSoLuong = gioHang.reduce((total, item) => {
         return total + item.soLuong;
@@ -17,19 +17,18 @@ const Search = () => {
     const sumThanhTien = gioHang.reduce((total, item) => {
         return total + item.thanhTien;
     }, 0);
-    const clickSearch = () => {
-        dispath(clickInput());
-    };
+    // const clickSearch = () => {
+    //     dispath(clickInput());
+    // };
 
-    const handleBack = () => {
-        dispath(offBack());
-    };
-    const timKiemSanPham = (event) => {
-        let keyword = event.target.value;
-        dispath(nhapNoiDung(keyword));
-    };
+    // const handleBack = () => {
+    //     dispath(offBack());
+    // };
+    // const timKiemSanPham = (event) => {
+    //     let keyword = event.target.value;
+    //     dispath(nhapNoiDung(keyword));
+    // };
     const [showGioHang, setShowGioHang] = useState(false);
-    // console.log(showGioHang);
     const handleGioHang = () => {
         setShowGioHang(!showGioHang);
     };
@@ -49,27 +48,14 @@ const Search = () => {
         <div id="search">
             <div className="container">
                 <div className="content">
-                    {back ? (
-                        <div className="back" onClick={handleBack}>
-                            <NavLink to="/">
-                                <i className="fa-solid fa-angle-left"></i>
-                            </NavLink>
-                        </div>
-                    ) : null}
                     <div className="input">
                         <NavLink to="tim-kiem">
                             <input
-                                id="timKiem"
-                                name="timKiem"
                                 type="text"
-                                placeholder="Tên sản phẩm cần tìm...,"
-                                value={keyword}
-                                onClick={clickSearch}
-                                onChange={timKiemSanPham}
+                                placeholder="Nhập tên sản phẩm cần tìm...,"
                             />
                         </NavLink>
                         <i className="fa-solid fa-magnifying-glass glass"></i>
-                        {clear ? <i className="fa-solid fa-xmark close"></i> : null}
                     </div>
                     {sumSoLuong > 0 ? (
                         <div className="cart" onClick={handleGioHang}>

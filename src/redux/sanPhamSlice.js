@@ -177,11 +177,11 @@ export const sanPhamSlice = createSlice({
 
     //đường dispath về
     reducers: {
-        themGioHang: (state) => {
+        timKiem: (state) => {
             console.log("thêm giỏ hàng")
         }
 
     }
 })
-export const { themGioHang } = sanPhamSlice.actions;
+export const { timKiem } = sanPhamSlice.actions;
 export default sanPhamSlice.reducer

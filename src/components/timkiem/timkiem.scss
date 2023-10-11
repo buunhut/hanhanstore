@@ -1,19 +1,383 @@
 #timKiem {
-  .goiY {
-    margin-top: 10px;
-    text-align: center;
+  #header {
+    position: sticky;
+    top: 0;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    background-color: red;
+    z-index: 400;
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      .back {
+        cursor: pointer;
+        i {
+          color: white;
+        }
+      }
+      .inputItem {
+        position: relative;
+        width: 100%;
+        input {
+          width: 100%;
+          height: 30px;
+          border: none;
+          outline: none;
+          border-radius: 30px;
+          padding: 0 30px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+        i.glass {
+          position: absolute;
+          top: 18px;
+          left: 8px;
+          color: red;
+        }
+        i.close {
+          position: absolute;
+          top: 18px;
+          right: 8px;
+          color: rgb(195, 195, 195);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  #main {
+    .goiY {
+      padding: 0 0 0 40px;
+      margin-top: 10px;
+      text-align: center;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      span {
+        padding: 4px 10px;
+        background-color: rgba(192, 192, 192, 0.2);
+        border-radius: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    p.ketQua {
+      margin: 20px 0;
+      color: red;
+    }
+    .content {
+    }
+  }
+}
+#main {
+  .content {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    span {
-      padding: 4px 10px;
-      background-color: rgba(192, 192, 192, 0.2);
+    width: 1180px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    .product {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      border: 1px solid red;
       border-radius: 10px;
-      margin-right: 10px;
+      padding: 10px;
+      background-color: rgba(255, 245, 245, 0.6);
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      margin-bottom: 10px;
+      width: 380px;
+      .hinhAnh {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        .heart {
+          position: absolute;
+          top: 0;
+          right: 0;
+          i {
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(192, 192, 192, 0.3);
+          }
+        }
+      }
+      .text {
+        width: 100%;
+        .tenSp {
+          p {
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+        .giaSp {
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          div {
+            width: 40%;
+            p.giaGiam {
+              margin-top: 5px;
+              color: rgb(255, 100, 0);
+              font-size: 16px;
+              font-weight: 500;
+            }
+            p.giaBan {
+              margin-top: 5px;
+              color: rgb(195, 195, 195);
+              text-decoration: line-through;
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+          .addToCart {
+            width: 60%;
+            button {
+              border: none;
+              color: white;
+              background-color: red;
+              height: 24px;
+              width: 160px;
+              font-size: 16px;
+              font-weight: 400;
+              border-radius: 24px;
+              cursor: pointer;
+              &:hover {
+                background-color: rgb(240, 10, 10);
+              }
+            }
+          }
+          .tamHet {
+            width: 60%;
+            button {
+              border: none;
+              color: white;
+              background-color: rgb(195, 195, 195);
+              height: 24px;
+              width: 160px;
+              font-size: 16px;
+              font-weight: 400;
+              border-radius: 24px;
+            }
+          }
+        }
+        .tangGiam {
+          margin: 10px auto 0;
+          width: 130px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10;
+          i.giam {
+            border: 1px solid rgb(195, 195, 195);
+            border-radius: 50%;
+            width: 20px;
+            height: 19px;
+            line-height: 17px;
+            text-align: center;
+            color: rgb(195, 195, 195);
+            cursor: pointer;
+          }
+          p.soLuong {
+            margin: 0 10px;
+            width: 60px;
+            height: 22px;
+            line-height: 22px;
+            padding: 0 10px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            border-radius: 24px;
+          }
+          i.tang {
+            border: 1px solid rgb(195, 195, 195);
+            border-radius: 50%;
+            width: 20px;
+            height: 19px;
+            line-height: 17px;
+            text-align: center;
+            background-color: rgb(195, 195, 195);
+            color: white;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
-  .ketQua {
-    margin-top: 30px;
-    height: 100vh;
+}
+
+@media screen and (max-width: 1200px) {
+  #main {
+    .content {
+      width: 770px;
+    }
+  }
+}
+@media screen and (max-width: 992px) {
+  #main {
+    .content {
+      width: 770px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  #main {
+    .content {
+      width: 380px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #main {
+    .content {
+      .product {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        border: 1px solid red;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: rgba(255, 245, 245, 0.6);
+        margin-bottom: 10px;
+        .hinhAnh {
+          width: 100px;
+          height: 100px;
+          position: relative;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+          .heart {
+            position: absolute;
+            top: 0;
+            right: 0;
+            i {
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              text-align: center;
+              border-radius: 50%;
+              background-color: rgba(192, 192, 192, 0.3);
+            }
+          }
+        }
+        .text {
+          width: 100%;
+          .tenSp {
+            p {
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+          .giaSp {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            div {
+              width: 40%;
+              p.giaGiam {
+                margin-top: 5px;
+                color: rgb(255, 100, 0);
+                font-size: 16px;
+                font-weight: 500;
+              }
+              p.giaBan {
+                margin-top: 5px;
+                color: rgb(195, 195, 195);
+                text-decoration: line-through;
+                font-size: 16px;
+                font-weight: 500;
+              }
+            }
+            .addToCart {
+              width: 60%;
+              button {
+                border: none;
+                color: white;
+                background-color: red;
+                height: 24px;
+                width: 160px;
+                font-size: 16px;
+                font-weight: 400;
+                border-radius: 24px;
+                cursor: pointer;
+                &:hover {
+                  background-color: rgb(240, 10, 10);
+                }
+              }
+            }
+            .tamHet {
+              width: 60%;
+              button {
+                border: none;
+                color: white;
+                background-color: rgb(195, 195, 195);
+                height: 24px;
+                width: 160px;
+                font-size: 16px;
+                font-weight: 400;
+                border-radius: 24px;
+              }
+            }
+          }
+          .tangGiam {
+            margin: 10px auto 0;
+            width: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10;
+            i.giam {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 20px;
+              height: 19px;
+              line-height: 17px;
+              text-align: center;
+              color: rgb(195, 195, 195);
+              cursor: pointer;
+            }
+            p.soLuong {
+              margin: 0 10px;
+              width: 60px;
+              height: 22px;
+              line-height: 22px;
+              padding: 0 10px;
+              background-color: white;
+              color: black;
+              text-align: center;
+              border-radius: 24px;
+            }
+            i.tang {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 20px;
+              height: 19px;
+              line-height: 17px;
+              text-align: center;
+              background-color: rgb(195, 195, 195);
+              color: white;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
   }
 }

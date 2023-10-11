@@ -61,16 +61,12 @@ const SanPhamItem = ({ item, inCart }) => {
             ></i>
           </div>
         ) : (
-
-
           kho > 0 ? (
             <div className="addToCart">
               <button type="button" onClick={() => handleThemVaoGio(item)}>
                 Thêm vào giỏ
               </button>
             </div>
-
-
           ) : (
             <div className="tamHet">
               <button type="button">

@@ -19,9 +19,9 @@ function App() {
           <Route path="/thuong-hieu" element={<ThuongHieu />} />
           <Route path="/thong-bao" element={<ThongBao />} />
           <Route path="/tai-khoan" element={<TaiKhoan />} />
-          <Route path="/tim-kiem" element={<TimKiem />} />
-
         </Route>
+        <Route path="/tim-kiem" element={<TimKiem />} />
+
 
       </Routes>
 
