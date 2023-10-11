@@ -1,6 +1,7 @@
 #myCarousel {
   background-color: rgba(255, 79, 79, 0.641);
   background: linear-gradient(to bottom, red, orange);
+  border-radius: 8px;
 
   margin-bottom: 30px;
   padding: 10px;
@@ -16,10 +17,8 @@
 }
 @media screen and (max-width: 992px) {
   #myCarousel {
-    margin-bottom: 30px;
     padding: 10px;
-    // width: 380px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     .slider-items {
       display: flex;
       justify-content: space-between;
@@ -35,10 +34,9 @@
 }
 @media screen and (max-width: 768px) {
   #myCarousel {
-    margin-bottom: 30px;
     padding: 10px;
     // width: 380px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     .slider-items {
       display: flex;
       justify-content: space-between;
@@ -54,10 +52,10 @@
 }
 @media screen and (max-width: 576px) {
   #myCarousel {
-    margin-bottom: 30px;
     padding: 10px;
     // width: 380px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
+
     .slider-items {
       display: flex;
       justify-content: space-between;
@@ -73,7 +71,7 @@
 }
 @media screen and (max-width: 400px) {
   #myCarousel {
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
     padding: 10px;
     width: 100%;
     .slider-items {
