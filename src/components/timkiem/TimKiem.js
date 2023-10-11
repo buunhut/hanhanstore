@@ -19,6 +19,7 @@ const TimKiem = () => {
 
     const handleClear = () => {
         setKeyword("");
+        setKetQuaTimKiem([])
     };
 
     // Hàm chuyển đổi dấu tiếng Việt sang không dấu
