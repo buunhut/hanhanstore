@@ -115,7 +115,7 @@ const TimKiem = () => {
 
                     {ketQuaTimKiem.length > 0 ? (
                         <>
-                            <p className="ketQua">Kết quả tìm kiếm</p>
+                            {/* <p className="ketQua">Kết quả tìm kiếm</p> */}
                             <div className="content">
                                 {ketQuaTimKiem?.map((item) => {
                                     const inCart = gioHang.some(
@@ -127,15 +127,14 @@ const TimKiem = () => {
                                     );
 
                                     const { id, tenSp, hinhAnh, giaBan, giaGiam, kho, gif } = item;
+                                    const phanTram = ((giaGiam * 100) / giaBan - 100).toFixed(1);
+
 
                                     return (
                                         <div className="product" key={id}>
                                             <div className="hinhAnh">
                                                 <img src={hinhAnh} alt="" />
 
-                                                <div className="heart">
-                                                    <i className="fa-regular fa-heart"></i>
-                                                </div>
                                             </div>
                                             <div className="text">
                                                 <div className="tenSp">
@@ -187,6 +186,16 @@ const TimKiem = () => {
                                                     )}
                                                 </div>
                                             </div>
+                                            <div className="heart">
+                                                <i className="fa-regular fa-heart"></i>
+                                            </div>
+                                            <div className="phanTram">
+                                                <p>{giaGiam > 0 ? phanTram + "%" : null}</p>
+                                            </div>
+                                            <div className="gif">
+                                                <i className="fa-solid fa-gift"></i>
+                                            </div>
+
                                         </div>
                                     );
                                 })}
