@@ -367,45 +367,47 @@
                     border-radius: 24px;
                   }
                 }
-              }
-              .tangGiam {
-                margin: 10px auto 0;
-                width: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 10;
-                i.giam {
-                  border: 1px solid rgb(195, 195, 195);
-                  border-radius: 50%;
-                  width: 20px;
-                  height: 19px;
-                  line-height: 17px;
-                  text-align: center;
-                  color: rgb(195, 195, 195);
-                  cursor: pointer;
-                }
-                p.soLuong {
-                  margin: 0 10px;
-                  width: 60px;
-                  height: 22px;
-                  line-height: 22px;
-                  padding: 0 10px;
-                  background-color: white;
-                  color: black;
-                  text-align: center;
-                  border-radius: 24px;
-                }
-                i.tang {
-                  border: 1px solid rgb(195, 195, 195);
-                  border-radius: 50%;
-                  width: 20px;
-                  height: 19px;
-                  line-height: 17px;
-                  text-align: center;
-                  background-color: rgb(195, 195, 195);
-                  color: white;
-                  cursor: pointer;
+                .tangGiam {
+                  margin: 10px auto 0;
+                  width: 120px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 10;
+                  i.giam {
+                    font-size: 16px;
+                    border: 1px solid rgb(195, 195, 195);
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: red;
+                    cursor: pointer;
+                  }
+                  p.soLuong {
+                    margin: 0 10px;
+                    width: 60px;
+                    height: 24px;
+                    line-height: 24px;
+                    padding: 0 10px;
+                    background-color: white;
+                    color: black;
+                    text-align: center;
+                    border-radius: 24px;
+                  }
+                  i.tang {
+                    font-size: 16px;
+                    border: 1px solid rgb(195, 195, 195);
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 20px;
+                    text-align: center;
+                    background-color: rgb(195, 195, 195);
+                    color: white;
+                    cursor: pointer;
+                  }
                 }
               }
             }
@@ -416,142 +418,143 @@
   }
 }
 @media screen and (max-width: 400px) {
-  #timKiem {
-    #header {
-      width: 100%;
-    }
-    #main {
-      .content {
-        width: 100%;
-        .product {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          gap: 10px;
-          border: 1px solid red;
-          border-radius: 10px;
-          padding: 18px 10px 10px;
-          background-color: rgba(255, 245, 245, 0.6);
-          margin-bottom: 10px;
-          width: 100%;
+  // #timKiem {
+  //   #header {
+  //     width: 100%;
+  //   }
+  //   // #main {
+  //   //   .content {
+  //   //     width: 100%;
+  //   //     .product {
+  //   //       display: flex;
+  //   //       align-items: center;
+  //   //       justify-content: flex-start;
+  //   //       gap: 10px;
+  //   //       border: 1px solid red;
+  //   //       border-radius: 10px;
+  //   //       padding: 18px 10px 10px;
+  //   //       background-color: rgba(255, 245, 245, 0.6);
+  //   //       margin-bottom: 10px;
+  //   //       width: 100%;
 
-          .hinhAnh {
-            width: 80px;
-            height: 80px;
-            position: relative;
-            img {
-              width: 100%;
-              height: 100%;
-            }
-          }
-          .text {
-            width: 100%;
-            .tenSp {
-              margin-top: 10px;
-              p {
-                font-size: 16px;
-                font-weight: 500;
-              }
-            }
-            .giaSp {
-              margin-top: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              div {
-                width: 40%;
-                p.giaGiam {
-                  margin-top: 5px;
-                  color: rgb(255, 100, 0);
-                  font-size: 16px;
-                  font-weight: 500;
-                }
-                p.giaBan {
-                  margin-top: 5px;
-                  color: rgb(195, 195, 195);
-                  text-decoration: line-through;
-                  font-size: 16px;
-                  font-weight: 500;
-                }
-              }
-              .addToCart {
-                width: 60%;
-                text-align: center;
-                button {
-                  border: none;
-                  color: white;
-                  background-color: red;
-                  height: 24px;
-                  width: 120px;
-                  margin: 10px auto 0;
-                  font-size: 16px;
-                  font-weight: 400;
-                  border-radius: 24px;
-                  cursor: pointer;
-                  &:hover {
-                    background-color: rgb(240, 10, 10);
-                  }
-                }
-              }
-              .tamHet {
-                width: 60%;
-                text-align: center;
-                button {
-                  border: none;
-                  color: white;
-                  background-color: rgb(195, 195, 195);
-                  height: 24px;
-                  width: 120px;
-                  margin: 10px auto 0;
-                  font-size: 16px;
-                  font-weight: 400;
-                  border-radius: 24px;
-                }
-              }
-            }
-            .tangGiam {
-              margin: 10px auto 0;
-              width: 120px;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 10;
-              i.giam {
-                border: 1px solid rgb(195, 195, 195);
-                border-radius: 50%;
-                width: 20px;
-                height: 19px;
-                line-height: 17px;
-                text-align: center;
-                color: rgb(195, 195, 195);
-                cursor: pointer;
-              }
-              p.soLuong {
-                margin: 0 10px;
-                width: 60px;
-                height: 22px;
-                line-height: 22px;
-                padding: 0 10px;
-                background-color: white;
-                color: black;
-                text-align: center;
-                border-radius: 24px;
-              }
-              i.tang {
-                border: 1px solid rgb(195, 195, 195);
-                border-radius: 50%;
-                width: 20px;
-                height: 19px;
-                line-height: 17px;
-                text-align: center;
-                background-color: rgb(195, 195, 195);
-                color: white;
-                cursor: pointer;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  //   //       .hinhAnh {
+  //   //         width: 80px;
+  //   //         height: 80px;
+  //   //         position: relative;
+  //   //         img {
+  //   //           width: 100%;
+  //   //           height: 100%;
+  //   //         }
+  //   //       }
+  //   //       .text {
+  //   //         width: 100%;
+  //   //         .tenSp {
+  //   //           margin-top: 10px;
+  //   //           p {
+  //   //             font-size: 16px;
+  //   //             font-weight: 500;
+  //   //           }
+  //   //         }
+  //   //         .giaSp {
+  //   //           margin-top: 10px;
+  //   //           display: flex;
+  //   //           align-items: center;
+  //   //           justify-content: space-between;
+  //   //           div {
+  //   //             width: 40%;
+  //   //             p.giaGiam {
+  //   //               margin-top: 5px;
+  //   //               color: rgb(255, 100, 0);
+  //   //               font-size: 16px;
+  //   //               font-weight: 500;
+  //   //             }
+  //   //             p.giaBan {
+  //   //               margin-top: 5px;
+  //   //               color: rgb(195, 195, 195);
+  //   //               text-decoration: line-through;
+  //   //               font-size: 16px;
+  //   //               font-weight: 500;
+  //   //             }
+  //   //           }
+  //   //           .addToCart {
+  //   //             width: 60%;
+  //   //             text-align: center;
+  //   //             button {
+  //   //               border: none;
+  //   //               color: white;
+  //   //               background-color: red;
+  //   //               height: 24px;
+  //   //               width: 120px;
+  //   //               margin: 10px auto 0;
+  //   //               font-size: 16px;
+  //   //               font-weight: 400;
+  //   //               border-radius: 24px;
+  //   //               cursor: pointer;
+  //   //               &:hover {
+  //   //                 background-color: rgb(240, 10, 10);
+  //   //               }
+  //   //             }
+  //   //           }
+  //   //           .tamHet {
+  //   //             width: 60%;
+  //   //             text-align: center;
+  //   //             button {
+  //   //               border: none;
+  //   //               color: white;
+  //   //               background-color: rgb(195, 195, 195);
+  //   //               height: 24px;
+  //   //               width: 120px;
+  //   //               margin: 10px auto 0;
+  //   //               font-size: 16px;
+  //   //               font-weight: 400;
+  //   //               border-radius: 24px;
+  //   //             }
+  //   //           }
+  //   //         }
+  //   //         .tangGiam {
+  //   //           margin: 10px auto 0;
+  //   //           width: 120px;
+  //   //           display: flex;
+  //   //           align-items: center;
+  //   //           justify-content: space-between;
+  //   //           gap: 10;
+  //   //           i.giam {
+  //   //             border: 1px solid rgb(195, 195, 195);
+  //   //             border-radius: 50%;
+  //   //             width: 30px;
+  //   //             height: 30px;
+  //   //             line-height: 17px;
+  //   //             text-align: center;
+  //   //             // color: rgb(195, 195, 195);
+  //   //             color: red;
+  //   //             cursor: pointer;
+  //   //           }
+  //   //           p.soLuong {
+  //   //             margin: 0 10px;
+  //   //             width: 60px;
+  //   //             height: 22px;
+  //   //             line-height: 22px;
+  //   //             padding: 0 10px;
+  //   //             background-color: white;
+  //   //             color: black;
+  //   //             text-align: center;
+  //   //             border-radius: 24px;
+  //   //           }
+  //   //           i.tang {
+  //   //             border: 1px solid rgb(195, 195, 195);
+  //   //             border-radius: 50%;
+  //   //             width: 22px;
+  //   //             height: 20px;
+  //   //             line-height: 17px;
+  //   //             text-align: center;
+  //   //             background-color: rgb(195, 195, 195);
+  //   //             color: white;
+  //   //             cursor: pointer;
+  //   //           }
+  //   //         }
+  //   //       }
+  //   //     }
+  //   //   }
+  //   // }
+  // }
 }
