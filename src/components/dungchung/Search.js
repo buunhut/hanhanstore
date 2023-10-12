@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./search.scss";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clickInput, nhapNoiDung, offBack } from "../../redux/timKiemSlice";
-import { giamSoLuong, tangSoLuong, xoaDatHang } from "../../redux/gioHangSlice";
+import { giamSoLuong, tangSoLuong, xoaDatHang, datHangNgay } from "../../redux/gioHangSlice";
+import { login } from "../../redux/dangNhapSlice";
+import { message } from "antd";
 
 const Search = () => {
     const dispath = useDispatch();
@@ -33,16 +35,32 @@ const Search = () => {
         dispath(xoaDatHang(id));
     };
 
+    useEffect(() => {
+        dispath(login());
+    }, []);
+
+    const { isLogin, user } = useSelector((state) => state.dangNhap);
+
+    const handleDangHangNgay = () => {
+        if (isLogin) {
+            const dataDonHang = {
+                user,
+                gioHang,
+            }
+            dispath(datHangNgay(dataDonHang))
+            message.success('Đặt hàng thành công', 3)
+        } else {
+            message.error('Bạn chưa đăng nhập', 3)
+        }
+    }
+
     return (
         <div id="search">
             <div className="container">
                 <div className="content">
                     <div className="input">
                         <NavLink to="tim-kiem">
-                            <input
-                                type="text"
-                                placeholder="Bạn muốn tìm gì hôm nay"
-                            />
+                            <input type="text" placeholder="Bạn muốn tìm gì hôm nay" />
                         </NavLink>
                         <i className="fa-solid fa-magnifying-glass glass"></i>
                     </div>
@@ -64,7 +82,20 @@ const Search = () => {
             <div id="gioHang" className={showGioHang ? "show" : null}>
                 <div className="top">
                     <i className="fa-solid fa-angle-right" onClick={handleGioHang}></i>
-                    <p>Giỏ hàng của bạn ({sumSoLuong.toLocaleString()})</p>
+                    <div>
+                        {/* {isLogin ? (
+
+                            <p
+                                className="
+                        user"
+                            >
+                                <i className="fa-solid fa-user"></i>
+                                {user.tenNguoiDung}
+                            </p>
+                        ) : null} */}
+                        <p>Giỏ hàng của bạn ({sumSoLuong.toLocaleString()})</p>
+
+                    </div>
                     <button type="button" onClick={handleGioHang}>
                         Đóng
                     </button>
@@ -112,7 +143,7 @@ const Search = () => {
                 </div>
                 <div className="bottom">
                     <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
-                    <button type="button">Đặt hàng ngay</button>
+                    <button type="button" onClick={handleDangHangNgay}>Đặt hàng ngay</button>
                 </div>
             </div>
         </div>

@@ -96,10 +96,20 @@
         color: red;
         cursor: pointer;
       }
-      p {
-        font-size: 20px;
-        font-weight: 500;
-        // color: red;
+      div {
+        p.user {
+          font-size: 14px;
+          color: rgb(195, 195, 195);
+          text-align: center;
+          i {
+            width: 20px;
+          }
+        }
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          // color: red;
+        }
       }
       button {
         padding: 5px 10px;
@@ -107,8 +117,6 @@
         background-color: red;
         color: white;
         border-radius: 8px;
-        font-size: 15px;
-        font-weight: 400;
         cursor: pointer;
         &:hover {
           background-color: rgb(240, 10, 10);
@@ -345,10 +353,16 @@
           color: red;
           cursor: pointer;
         }
-        p {
-          font-size: 20px;
-          font-weight: 500;
-          // color: red;
+        div {
+          p.user {
+            font-size: 12px;
+            color: rgb(195, 195, 195);
+          }
+          p {
+            font-size: 20px;
+            font-weight: 500;
+            // color: red;
+          }
         }
         button {
           padding: 5px 10px;

@@ -244,17 +244,21 @@ const TaiKhoan = () => {
                                 <div id="thongTinNguoiDung">
                                     <h3>Thông tin người dùng</h3>
                                     <div className="main">
-                                        <p className="tenNguoiDung">{user.tenNguoiDung}</p>
-                                        <p className="soDt">{user.soDt}</p>
-                                        <p className="diaChi">{user.diaChi}</p>
+                                        <p className="tenNguoiDung">
+                                            <i className="fa-solid fa-user"></i>
+                                            {user.tenNguoiDung}</p>
+                                        <p className="soDt">
+                                            <i className="fa-solid fa-phone"></i>
+
+                                            {user.soDt}</p>
+                                        <p className="diaChi">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                            {user.diaChi}</p>
+
                                     </div>
                                     <div className="myBtn">
                                         <button type="button" onClick={handleDangXuat}>Đăng xuất</button>
-
-
                                     </div>
-
-
                                 </div>
                             ) : (
                                 //chưa đăng nhập

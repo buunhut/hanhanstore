@@ -69,8 +69,18 @@ export const gioHangSlice = createSlice({
                 localStorage.setItem('gioHang', JSON.stringify(state.gioHang));
             }
         },
+
+        datHangNgay: (state, action) => {
+            localStorage.removeItem('gioHang')
+            state.gioHang = []
+
+            console.log(action.payload)
+        }
+
+
+
     }
 });
 
-export const { themGioHang, tangSoLuong, giamSoLuong, xoaDatHang } = gioHangSlice.actions;
+export const { themGioHang, tangSoLuong, giamSoLuong, xoaDatHang, datHangNgay } = gioHangSlice.actions;
 export default gioHangSlice.reducer;
