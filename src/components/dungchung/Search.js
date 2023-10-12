@@ -55,6 +55,9 @@ const Search = () => {
         }
         dispath(datHangNgay(dataDonHang))
         message.success('Đặt hàng thành công', 3)
+
+        handleDangHangNgay()
+        handleGioHang()
     }
 
     return (
@@ -193,7 +196,7 @@ const Search = () => {
                         <textarea name="ghiChu" id="ghiChu" cols="50" rows="5"></textarea>
                     </div>
                     <div className="thanhToan">
-                        <p>Thanh toán khi nhận hàng</p>
+                        <p>Thanh toán khi nhận hàng: <b> {sumThanhTien.toLocaleString() + "đ"} </b></p>
                     </div>
                     <div className="myBtn">
                         <button type="button" onClick={handleXacNhanDonHang}> Xác nhận đơn hàng</button>
