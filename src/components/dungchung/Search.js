@@ -3,7 +3,12 @@ import "./search.scss";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clickInput, nhapNoiDung, offBack } from "../../redux/timKiemSlice";
-import { giamSoLuong, tangSoLuong, xoaDatHang, datHangNgay } from "../../redux/gioHangSlice";
+import {
+    giamSoLuong,
+    tangSoLuong,
+    xoaDatHang,
+    datHangNgay,
+} from "../../redux/gioHangSlice";
 import { login } from "../../redux/dangNhapSlice";
 import { message } from "antd";
 
@@ -41,7 +46,14 @@ const Search = () => {
 
     const { isLogin, user } = useSelector((state) => state.dangNhap);
 
+    const [showXacNhan, setShowXacNhan] = useState(false);
+
     const handleDangHangNgay = () => {
+
+        setShowXacNhan(!showXacNhan);
+    };
+
+    const handleXacNhanDonHang = () => {
         if (isLogin) {
             const dataDonHang = {
                 user,
@@ -49,9 +61,11 @@ const Search = () => {
             }
             dispath(datHangNgay(dataDonHang))
             message.success('Đặt hàng thành công', 3)
+            handleDangHangNgay()
         } else {
             message.error('Bạn chưa đăng nhập', 3)
         }
+
     }
 
     return (
@@ -83,18 +97,7 @@ const Search = () => {
                 <div className="top">
                     <i className="fa-solid fa-angle-right" onClick={handleGioHang}></i>
                     <div>
-                        {/* {isLogin ? (
-
-                            <p
-                                className="
-                        user"
-                            >
-                                <i className="fa-solid fa-user"></i>
-                                {user.tenNguoiDung}
-                            </p>
-                        ) : null} */}
                         <p>Giỏ hàng của bạn ({sumSoLuong.toLocaleString()})</p>
-
                     </div>
                     <button type="button" onClick={handleGioHang}>
                         Đóng
@@ -143,7 +146,53 @@ const Search = () => {
                 </div>
                 <div className="bottom">
                     <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
-                    <button type="button" onClick={handleDangHangNgay}>Đặt hàng ngay</button>
+                    <button type="button" onClick={handleDangHangNgay}>
+                        Đặt hàng ngay
+                    </button>
+                </div>
+
+                {showXacNhan ? (
+                    <div id="confirm" onClick={handleDangHangNgay}></div>
+                ) : null}
+                <div id="main" className={showXacNhan ? "show" : null}>
+                    <button type="button" className="close" onClick={handleDangHangNgay}>
+                        Đóng
+                    </button>
+                    <h3>Thông tin khách hàng</h3>
+                    <div className="tenNguoiDung">
+                        <div className="inputItem">
+                            <input
+                                id="tenNguoiDung"
+                                name="tenNguoiDung"
+                                type="text"
+                                value={user.tenNguoiDung}
+                            />
+                            <i className="fa-solid fa-user"></i>
+                        </div>
+                        <div className="inputItem">
+                            <input id="soDt" name="soDt" type="text" value={user.soDt} />
+                            <i className="fa-solid fa-phone"></i>
+                        </div>
+                        <div className="inputItem">
+                            <input
+                                id="diaChi"
+                                name="diaChi"
+                                type="text"
+                                value={user.diaChi}
+                            />
+                            <i className="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                    <div className="ghiChu">
+                        <label htmlFor="ghiChu">Ghi Chú</label>
+                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="5"></textarea>
+                    </div>
+                    <div className="thanhToan">
+                        <p>Thanh toán khi nhận hàng</p>
+                    </div>
+                    <div className="myBtn">
+                        <button type="button" onClick={handleXacNhanDonHang}> Xác nhận đơn hàng</button>
+                    </div>
                 </div>
             </div>
         </div>

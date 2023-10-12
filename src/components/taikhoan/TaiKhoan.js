@@ -276,11 +276,11 @@ const TaiKhoan = () => {
                                     <div id="thongTinNguoiDung">
                                         <h3>Qui định chung</h3>
                                         <div className="main quiDinh">
-                                            <p>Cảm ơn đã sử dụng dịch vụ của chúng tôi, quý khách vui lòng tuân thủ một số qui định sau: </p>
-                                            <p>1. Không bơm hàng</p>
-                                            <p>2. Không trả lại hàng</p>
-                                            <p>3. Không mua thiếu</p>
-                                            <p>*<i>Truy cập sử dụng website, Quý khách đã đồng ý cho chúng tôi thu thập thông tin số điện thoại của quý khách.</i> </p>
+                                            <p>Cảm ơn Quý khách đã sử dụng dịch vụ của chúng tôi. Quý khách vui lòng tuân thủ một số qui định sau: </p>
+                                            <p>1. Không bơm hàng.</p>
+                                            <p>2. Không trả lại hàng.</p>
+                                            <p>3. Không mua thiếu.</p>
+                                            <p>*<i>Việc truy cập sử dụng website, đăng ký tài khoản. Quý khách đã đồng ý cho chúng tôi thu thập thông tin: họ tên, số điện thoại, địa chỉ mà quý khách đã đăng ký.</i> </p>
                                         </div>
                                         <div className="myBtn">
                                             <button type="button" onClick={handleDangXuat}>Đăng xuất</button>
