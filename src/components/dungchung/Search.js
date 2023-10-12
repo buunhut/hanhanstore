@@ -146,9 +146,25 @@ const Search = () => {
                 </div>
                 <div className="bottom">
                     <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
-                    <button type="button" onClick={handleDangHangNgay}>
-                        Đặt hàng ngay
-                    </button>
+
+                    {
+                        isLogin ? (
+                            <button type="button" onClick={handleDangHangNgay}>
+                                Đặt hàng ngay
+                            </button>
+
+
+                        ) : (
+                            <button type="button">
+                                <NavLink to='/tai-khoan'>
+                                    Đăng nhập
+                                </NavLink>
+                            </button>
+
+
+                        )
+                    }
+
                 </div>
 
                 {showXacNhan ? (
