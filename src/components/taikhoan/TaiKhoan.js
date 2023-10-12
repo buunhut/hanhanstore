@@ -208,7 +208,7 @@ const TaiKhoan = () => {
 
 
 
-                message.error('Số đt chưa đăng ký!', 3)
+                message.error('Số điện thoại chưa đăng ký!', 3)
             }
         }
 
