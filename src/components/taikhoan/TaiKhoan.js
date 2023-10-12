@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./taikhoan.scss";
 import { NavLink } from "react-router-dom";
 import Footer from "../dungchung/Footer.js";
-import { message } from 'antd';
+import { Modal, message } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../../redux/dangNhapSlice";
 
 const TaiKhoan = () => {
     const dispath = useDispatch()
-
-
     useEffect(() => {
         dispath(login())
     }, [])
-
-
     const { isLogin, user } = useSelector((state) => state.dangNhap)
-
     const [dangKy, setDangKy] = useState(false);
+
     const [userDangKy, setUserDangKy] = useState({
         soDt: "",
         tenNguoiDung: "",
@@ -220,7 +216,23 @@ const TaiKhoan = () => {
 
 
     const handleDangXuat = () => {
-        dispath(logout())
+        Modal.confirm({
+            title: 'Xác nhận đăng xuất',
+            content: 'Bạn có chắc muốn đăng xuất?',
+            okText: 'Đồng ý',
+            okType: 'danger',
+            cancelText: 'Không',
+            onOk() {
+                // Put your delete logic here
+                dispath(logout())
+                message.success('Đăng xuất thành công', 3)
+            },
+            onCancel() {
+            },
+        });
+
+
+
     }
 
     return (

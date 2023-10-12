@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./search.scss";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clickInput, nhapNoiDung, offBack } from "../../redux/timKiemSlice";
 import {
     giamSoLuong,
     tangSoLuong,
@@ -14,9 +13,6 @@ import { message } from "antd";
 
 const Search = () => {
     const dispath = useDispatch();
-    // const { back, clear, keyword, ketQua } = useSelector(
-    //     (state) => state.timKiem
-    // );
     const { gioHang } = useSelector((state) => state.gioHang);
     const sumSoLuong = gioHang.reduce((total, item) => {
         return total + item.soLuong;
@@ -49,23 +45,16 @@ const Search = () => {
     const [showXacNhan, setShowXacNhan] = useState(false);
 
     const handleDangHangNgay = () => {
-
         setShowXacNhan(!showXacNhan);
     };
 
     const handleXacNhanDonHang = () => {
-        if (isLogin) {
-            const dataDonHang = {
-                user,
-                gioHang,
-            }
-            dispath(datHangNgay(dataDonHang))
-            message.success('Đặt hàng thành công', 3)
-            handleDangHangNgay()
-        } else {
-            message.error('Bạn chưa đăng nhập', 3)
+        const dataDonHang = {
+            user,
+            gioHang,
         }
-
+        dispath(datHangNgay(dataDonHang))
+        message.success('Đặt hàng thành công', 3)
     }
 
     return (
