@@ -241,25 +241,52 @@ const TaiKhoan = () => {
                         {
                             isLogin ? (
                                 //đã đăng nhập
-                                <div id="thongTinNguoiDung">
-                                    <h3>Thông tin người dùng</h3>
-                                    <div className="main">
-                                        <p className="tenNguoiDung">
-                                            <i className="fa-solid fa-user"></i>
-                                            {user.tenNguoiDung}</p>
-                                        <p className="soDt">
-                                            <i className="fa-solid fa-phone"></i>
+                                <>
+                                    <div id="thongTinNguoiDung">
+                                        <h3>Thông tin người dùng</h3>
+                                        <div className="main">
+                                            <p className="tenNguoiDung">
+                                                <i className="fa-solid fa-user"></i>
+                                                {user.tenNguoiDung}</p>
+                                            <p className="soDt">
+                                                <i className="fa-solid fa-phone"></i>
 
-                                            {user.soDt}</p>
-                                        <p className="diaChi">
-                                            <i className="fa-solid fa-location-dot"></i>
-                                            {user.diaChi}</p>
+                                                {user.soDt}</p>
+                                            <p className="diaChi">
+                                                <i className="fa-solid fa-location-dot"></i>
+                                                {user.diaChi}</p>
+
+                                        </div>
+                                    </div>
+                                    <div id="thongTinNguoiDung">
+                                        <h3>Thêm địa chỉ nhận hàng</h3>
+                                        <div className="main">
+                                            <p>Chưa có viết</p>
+
+                                        </div>
+                                    </div>
+                                    <div id="thongTinNguoiDung">
+                                        <h3>Lịch sử đặt hàng</h3>
+                                        <div className="main">
+                                            <p>Chưa có viết</p>
+
+                                        </div>
 
                                     </div>
-                                    <div className="myBtn">
-                                        <button type="button" onClick={handleDangXuat}>Đăng xuất</button>
+                                    <div id="thongTinNguoiDung">
+                                        <h3>Qui định chung</h3>
+                                        <div className="main quiDinh">
+                                            <p>Cảm ơn đã sử dụng dịch vụ của chúng tôi, quý khách vui lòng tuân thủ một số qui định sau: </p>
+                                            <p>1. Không bơm hàng</p>
+                                            <p>2. Không trả lại hàng</p>
+                                            <p>3. Không mua thiếu</p>
+                                            <p>*<i>Truy cập sử dụng website, Quý khách đã đồng ý cho chúng tôi thu thập thông tin số điện thoại của quý khách.</i> </p>
+                                        </div>
+                                        <div className="myBtn">
+                                            <button type="button" onClick={handleDangXuat}>Đăng xuất</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </>
                             ) : (
                                 //chưa đăng nhập
                                 dangKy ? (
