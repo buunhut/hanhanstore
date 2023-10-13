@@ -163,6 +163,9 @@ const TaiKhoan = () => {
             //rồi chuyển sang trang đăng nhập
             //nếu chưa thì mới xác nhận otp
 
+            setShowXacNhanOtp(true)
+
+
 
             //code gửi nhận otp
             const recaptchaVerifier = new RecaptchaVerifier(
@@ -188,7 +191,6 @@ const TaiKhoan = () => {
 
 
 
-            setShowXacNhanOtp(true)
 
 
             // setSoDtDangNhap(userDangKy.soDt)
