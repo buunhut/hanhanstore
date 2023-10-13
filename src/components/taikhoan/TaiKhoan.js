@@ -168,25 +168,32 @@ const TaiKhoan = () => {
 
             const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {
                 'size': 'invisible',
-                // 'callback': (response) => {
-                //     // reCAPTCHA solved, allow signInWithPhoneNumber.
-                //     // onSignInSubmit();
-                //     console.log("first" + response)
-                // }
+                'callback': async (response) => {
+                    // reCAPTCHA solved, allow signInWithPhoneNumber.
+                    // onSignInSubmit();
+                    console.log("first" + response)
+                    const result = await signInWithPhoneNumber(
+                        auth,
+                        phoneNumber,
+                        appVerifier
+                    );
+                    console.log(result)
+                    setConfirmObj(result);
+                }
             });
 
             // recaptchaVerifier.render()
 
             console.log(appVerifier)
 
-            const response = await signInWithPhoneNumber(
-                auth,
-                phoneNumber,
-                appVerifier
-            );
+            // const result = await signInWithPhoneNumber(
+            //     auth,
+            //     phoneNumber,
+            //     appVerifier
+            // );
 
-            console.log(response)
-            setConfirmObj(response);
+            // console.log(result)
+            // setConfirmObj(result);
 
             setShowXacNhanOtp(true)
 
