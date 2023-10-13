@@ -167,11 +167,12 @@ const TaiKhoan = () => {
             // });
 
             const recaptchaVerifier = new RecaptchaVerifier(auth, 'dangKyBtn', {
-                // 'size': 'invisible',
+                'size': 'invisible',
             });
 
-            recaptchaVerifier.render()
+            // recaptchaVerifier.render()
 
+            console.log(recaptchaVerifier)
 
             const response = await signInWithPhoneNumber(
                 auth,
