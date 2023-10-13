@@ -167,7 +167,7 @@ const TaiKhoan = () => {
             // });
 
             const recaptchaVerifier = new RecaptchaVerifier(auth, 'dangKyBtn', {
-                'size': 'invisible',
+                // 'size': 'invisible',
             });
 
             recaptchaVerifier.render()
@@ -494,7 +494,7 @@ const TaiKhoan = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };
