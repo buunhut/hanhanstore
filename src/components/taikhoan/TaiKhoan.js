@@ -170,10 +170,10 @@ const TaiKhoan = () => {
                 "recaptcha",
                 {
                     'size': 'invisible',
-                    // 'callback': (response) => {
-                    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
-                    //     onSignInSubmit();
-                    // }
+                    'callback': (response) => {
+                        // reCAPTCHA solved, allow signInWithPhoneNumber.
+                        // onSignInSubmit();
+                    }
                 }
             );
             recaptchaVerifier.render();
@@ -417,6 +417,8 @@ const TaiKhoan = () => {
                                                                 </button>
                                                             </div>
                                                             <p onClick={() => setShowXacNhanOtp(false)}>Quay về trang đăng ký</p>
+                                                            <div id="recaptcha"></div>
+
 
                                                         </>
                                                     ) : (
@@ -475,7 +477,6 @@ const TaiKhoan = () => {
                                                     )
                                                 }
                                             </form>
-                                            <div id="recaptcha"></div>
 
                                         </div>
                                     </>
