@@ -167,7 +167,7 @@ const TaiKhoan = () => {
             // });
 
             const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {
-                'size': 'invisible',
+                'size': 'normal',
                 'callback': async (response) => {
                     // reCAPTCHA solved, allow signInWithPhoneNumber.
                     // onSignInSubmit();
@@ -179,10 +179,12 @@ const TaiKhoan = () => {
                     // );
                     // console.log(result)
                     // setConfirmObj(result);
+                    // setShowXacNhanOtp(true)
+
                 }
             });
 
-            // recaptchaVerifier.render()
+            // appVerifier.render()
 
             console.log(appVerifier)
 
@@ -377,7 +379,6 @@ const TaiKhoan = () => {
                                         <form action="">
 
                                             <>
-                                                <div id="myRecaptcha" />
                                                 <div className="formDk" style={{ display: formDk ? "block" : "none" }}>
                                                     <div className="inputItem">
                                                         <PhoneInput
@@ -428,10 +429,13 @@ const TaiKhoan = () => {
                                                             Đăng ký
                                                         </button>
                                                     </div>
+                                                    <div id="myRecaptcha" />
+
                                                 </div>
 
 
                                                 <div className="formXacMinh">
+
                                                     {/* {
                                                         formDk ? null : (<h3>Vui lòng xác minh bước 1...</h3>)
                                                     }
