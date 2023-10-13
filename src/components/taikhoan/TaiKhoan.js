@@ -167,7 +167,7 @@ const TaiKhoan = () => {
             // });
 
             const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {
-                'size': 'normal',
+                'size': 'invisible',
                 'callback': async (response) => {
                     // reCAPTCHA solved, allow signInWithPhoneNumber.
                     // onSignInSubmit();
@@ -180,6 +180,7 @@ const TaiKhoan = () => {
                     // console.log(result)
                     // setConfirmObj(result);
                     // setShowXacNhanOtp(true)
+                    console.log(response)
 
                 }
             });
@@ -431,17 +432,19 @@ const TaiKhoan = () => {
                                                     </div>
                                                     <div id="myRecaptcha" />
 
+
                                                 </div>
 
 
                                                 <div className="formXacMinh">
+
 
                                                     {/* {
                                                         formDk ? null : (<h3>Vui lòng xác minh bước 1...</h3>)
                                                     }
                                                     <div id="reCaptcha" /> */}
                                                     <div className="xacMinhOtp" style={{ display: showXacNhanOtp ? "block" : "none" }}>
-                                                        <h3>Vui lòng xác minh OTP...</h3>
+                                                        {/* <h3>Vui lòng xác minh OTP...</h3> */}
                                                         <div className="inputItem">
                                                             <input
                                                                 id="otp"
@@ -456,6 +459,7 @@ const TaiKhoan = () => {
                                                         {alertOtp !== "" ? (
                                                             <p className="alert">{alertOtp}</p>
                                                         ) : null}
+
                                                         <div className="myBtn">
                                                             <button type="button" onClick={handleXacNhanOtp}>
                                                                 Xác nhận OTP
