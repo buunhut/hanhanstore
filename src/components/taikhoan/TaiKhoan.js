@@ -158,16 +158,8 @@ const TaiKhoan = () => {
 
             // console.log(recaptchaVerifier)
             recaptchaVerifier.render();
-            //bổ không cần bước xác nhận recaptcha được k?
-            // const response = await signInWithPhoneNumber(
-            //     userDangKy.soDt,
-            //     auth,
-            //     recaptchaVerifier
-            // );
-            // setConfirmObj(response);
 
             SetFormDk(false)
-            console.log("first")
 
         }
     };
@@ -180,6 +172,8 @@ const TaiKhoan = () => {
             // console.log("code kiểm tra otp")
             try {
                 await confirmObj.confirm(otp);
+                //lưu vào csdl 
+
                 message.success("OTP hợp lệ, đăng ký thành công");
                 setOtp("");
                 setUserDangKy({
