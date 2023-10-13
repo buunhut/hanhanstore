@@ -171,14 +171,14 @@ const TaiKhoan = () => {
                 'callback': async (response) => {
                     // reCAPTCHA solved, allow signInWithPhoneNumber.
                     // onSignInSubmit();
-                    console.log("first" + response)
-                    const result = await signInWithPhoneNumber(
-                        auth,
-                        phoneNumber,
-                        appVerifier
-                    );
-                    console.log(result)
-                    setConfirmObj(result);
+                    // console.log("first" + response)
+                    // const result = await signInWithPhoneNumber(
+                    //     auth,
+                    //     phoneNumber,
+                    //     appVerifier
+                    // );
+                    // console.log(result)
+                    // setConfirmObj(result);
                 }
             });
 
@@ -186,14 +186,14 @@ const TaiKhoan = () => {
 
             console.log(appVerifier)
 
-            // const result = await signInWithPhoneNumber(
-            //     auth,
-            //     phoneNumber,
-            //     appVerifier
-            // );
+            const result = await signInWithPhoneNumber(
+                auth,
+                phoneNumber,
+                appVerifier
+            );
 
-            // console.log(result)
-            // setConfirmObj(result);
+            console.log(result)
+            setConfirmObj(result);
 
             setShowXacNhanOtp(true)
 
