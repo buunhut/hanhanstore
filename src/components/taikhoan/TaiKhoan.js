@@ -148,25 +148,41 @@ const TaiKhoan = () => {
 
         if (isValid) {
             const number = userDangKy.soDt;
-            const recaptchaVerifier = new RecaptchaVerifier(auth, 'reCaptcha', {
+            // const recaptchaVerifier = new RecaptchaVerifier(auth, 'reCaptcha', {
 
-                // 'size': 'normal',
-                'callback': async () => {
-                    setShowXacNhanOtp(true)
-                    const response = await signInWithPhoneNumber(
-                        auth,
-                        number,
-                        recaptchaVerifier
+            //     'size': 'normal',
+            //     'callback': async () => {
+            //         setShowXacNhanOtp(true)
+            //         // const response = await signInWithPhoneNumber(
+            //         //     auth,
+            //         //     number,
+            //         //     recaptchaVerifier
+            //         // );
+            //         // setConfirmObj(response);
 
-                    );
-                    setConfirmObj(response);
+            //         console.log("sent otp")
+            //     }
+            // });
 
-                    console.log("sent otp")
-                }
+            const recaptchaVerifier = new RecaptchaVerifier(auth, 'dangKyBtn', {
+                size: 'invisible',
             });
 
+            const response = await signInWithPhoneNumber(
+                auth,
+                number,
+                recaptchaVerifier
+            );
+
+            console.log(response)
+            setConfirmObj(response);
+
+            setShowXacNhanOtp(true)
+
+
+
             // console.log(recaptchaVerifier)
-            recaptchaVerifier.render();
+            // recaptchaVerifier.render();
 
             SetFormDk(false)
             setSoDtDangNhap(number.replace('+84', '0'))
@@ -397,12 +413,12 @@ const TaiKhoan = () => {
 
 
                                                 <div className="formXacMinh">
-                                                    {
+                                                    {/* {
                                                         formDk ? null : (<h3>Vui lòng xác minh bước 1...</h3>)
                                                     }
-                                                    <div id="reCaptcha" />
+                                                    <div id="reCaptcha" /> */}
                                                     <div className="xacMinhOtp" style={{ display: showXacNhanOtp ? "block" : "none" }}>
-                                                        <h3>Vui lòng xác minh bước 2...</h3>
+                                                        <h3>Vui lòng xác minh OTP...</h3>
                                                         <div className="inputItem">
                                                             <input
                                                                 id="otp"
@@ -473,7 +489,6 @@ const TaiKhoan = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };
