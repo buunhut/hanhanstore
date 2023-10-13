@@ -38,6 +38,12 @@
           padding: 20px;
           border-radius: 10px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          .formXacMinh {
+            margin-top: 20px;
+            h3 {
+              color: rgb(195, 195, 195);
+            }
+          }
           .inputItem {
             position: relative;
             width: 100%;
@@ -157,6 +163,10 @@
       }
     }
   }
+}
+
+#reCaptcha {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 576px) {
