@@ -163,7 +163,6 @@ const TaiKhoan = () => {
             //rồi chuyển sang trang đăng nhập
             //nếu chưa thì mới xác nhận otp
 
-            setShowXacNhanOtp(true)
 
 
 
@@ -173,14 +172,15 @@ const TaiKhoan = () => {
                 "recaptcha",
                 {
                     'size': 'invisible',
-                    'callback': (response) => {
-                        // reCAPTCHA solved, allow signInWithPhoneNumber.
-                        // onSignInSubmit();
-                    }
+                    // 'callback': (response) => {
+                    //     // reCAPTCHA solved, allow signInWithPhoneNumber.
+                    //     // onSignInSubmit();
+                    // }
                 }
             );
             recaptchaVerifier.render();
             //bổ không cần bước xác nhận recaptcha được k?
+
             const response = await signInWithPhoneNumber(
                 auth,
                 userDangKy.soDt,
@@ -188,6 +188,9 @@ const TaiKhoan = () => {
             );
             setConfirmObj(response);
             //code gửi nhận otp
+
+            setShowXacNhanOtp(true)
+
 
 
 
@@ -419,8 +422,6 @@ const TaiKhoan = () => {
                                                                 </button>
                                                             </div>
                                                             <p onClick={() => setShowXacNhanOtp(false)}>Quay về trang đăng ký</p>
-                                                            <div id="recaptcha"></div>
-
 
                                                         </>
                                                     ) : (
@@ -481,7 +482,10 @@ const TaiKhoan = () => {
                                             </form>
 
                                         </div>
+                                        <div id="recaptcha"></div>
+
                                     </>
+
                                 ) : (
                                     <>
                                         <h3>Đăng nhập</h3>
