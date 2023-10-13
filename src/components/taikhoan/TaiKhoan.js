@@ -367,9 +367,10 @@ const TaiKhoan = () => {
                                 <>
                                     <h3>Đăng ký tài khoản</h3>
                                     <div className="myForm">
-                                        <form action="" id="myRecaptcha">
+                                        <form action="">
 
                                             <>
+                                                <div id="myRecaptcha" />
                                                 <div className="formDk" style={{ display: formDk ? "block" : "none" }}>
                                                     <div className="inputItem">
                                                         <PhoneInput
