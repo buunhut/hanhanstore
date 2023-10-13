@@ -228,20 +228,31 @@ const TaiKhoan = () => {
 
     const [alertDangNhap, setAlertDangNhap] = useState('')
 
-    const handleChangeInputDangNhap = (event) => {
-        const { id, value } = event.target;
+    const handleChangeInputDangNhap = (value) => {
         // Validate the input as it's being changed
         // Check for non-digit characters
-        const phonePattern = /^\d+$/;
-        if (!phonePattern.test(value)) {
-            setAlertDangNhap('Số điện thoại chỉ được nhập số');
+        // const phonePattern = /^\d+$/;
+        // if (!phonePattern.test(value)) {
+        //     setAlertDangNhap('Số điện thoại chỉ được nhập số');
+        // } else {
+        //     if (value.length < 10) {
+        //         setAlertDangNhap('Số điện thoại chưa hợp lệ');
+        //     } else {
+        //         setAlertDangNhap('')
+        //     }
+        // }
+
+        if (value === '' || value === undefined) {
+            setAlertDangNhap('Vui lòng nhập số điện thoại')
+
+
         } else {
-            if (value.length < 10) {
-                setAlertDangNhap('Số điện thoại chưa hợp lệ');
-            } else {
-                setAlertDangNhap('')
-            }
+            setAlertDangNhap('')
+
         }
+
+
+
         setSoDtDangNhap(value)
 
 
@@ -250,24 +261,18 @@ const TaiKhoan = () => {
     const handleDangNhap = () => {
         let isValid = true;
         const phonePattern = /^\d+$/;
-        if (soDtDangNhap === '') {
+        if (soDtDangNhap === '' || soDtDangNhap === undefined) {
             setAlertDangNhap('Vui lòng nhập số điện thoại')
             isValid = false
-        } else if (!phonePattern.test(soDtDangNhap)) {
-            setAlertDangNhap('Số điện thoại chỉ được nhập số');
-            isValid = false;
-        } else if (soDtDangNhap.length < 10) {
-            setAlertDangNhap('Số điện thoại chưa hợp lệ');
-            isValid = false;
         }
         // If any field is empty, prevent further validation
         if (!isValid) {
             return;
         } else {
             // All validation passed; you can now proceed with registration
-            if (soDtDangNhap === '0919317710') {
+            if (soDtDangNhap === '+84919317710') {
                 const user = {
-                    soDt: "0919317710",
+                    soDt: "+84919317710",
                     tenNguoiDung: "Trương Bửu Lập",
                     diaChi: "Chợ Cầu Số 2, Hoà Bình, Bạc Liêu",
                     token: 'TIGER'
@@ -343,7 +348,7 @@ const TaiKhoan = () => {
                                             <p className="soDt">
                                                 <i className="fa-solid fa-phone"></i>
 
-                                                {user.soDt}</p>
+                                                {user.soDt.replace('+84', '0')}</p>
                                             <p className="diaChi">
                                                 <i className="fa-solid fa-location-dot"></i>
                                                 {user.diaChi}</p>
@@ -487,18 +492,38 @@ const TaiKhoan = () => {
                                     </>
 
                                 ) : (
+                                    // <div className="inputItem">
+                                    //             <input
+                                    //                 id="soDt"
+                                    //                 name="soDt"
+                                    //                 value={soDtDangNhap}
+                                    //                 type="text"
+                                    //                 placeholder="Số điện thoại"
+                                    //                 onChange={handleChangeInputDangNhap} />
+                                    //             <i className="fa-solid fa-phone"></i>
+                                    //         </div>
                                     <>
                                         <h3>Đăng nhập</h3>
                                         <div className="myForm">
                                             <div className="inputItem">
-                                                <input
+                                                {/* <input
                                                     id="soDt"
                                                     name="soDt"
                                                     value={soDtDangNhap}
                                                     type="text"
                                                     placeholder="Số điện thoại"
                                                     onChange={handleChangeInputDangNhap} />
+                                                <i className="fa-solid fa-phone"></i> */}
+                                                <PhoneInput
+                                                    defaultCountry="VN"
+                                                    placeholder="Số điện thoại"
+                                                    value={soDtDangNhap}
+                                                    onChange={(value) => handleChangeInputDangNhap(value)}
+                                                    countries={['VN']}
+                                                    international={false}  // Đặt international thành false để ẩn quốc gia
+                                                />
                                                 <i className="fa-solid fa-phone"></i>
+
                                             </div>
                                             {
                                                 alertDangNhap !== "" ? (<p className="alert">{alertDangNhap}</p>) : null
