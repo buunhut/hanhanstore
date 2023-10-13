@@ -149,7 +149,7 @@ const TaiKhoan = () => {
 
 
         if (isValid) {
-            const number = userDangKy.soDt;
+            const phoneNumber = userDangKy.soDt;
             // const recaptchaVerifier = new RecaptchaVerifier(auth, 'reCaptcha', {
 
             //     'size': 'normal',
@@ -166,18 +166,16 @@ const TaiKhoan = () => {
             //     }
             // });
 
-            const recaptchaVerifier = new RecaptchaVerifier(auth, 'dangKyBtn', {
-                'size': 'invisible',
-            });
+            const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {});
 
             // recaptchaVerifier.render()
 
-            console.log(recaptchaVerifier)
+            console.log(appVerifier)
 
             const response = await signInWithPhoneNumber(
                 auth,
-                number,
-                recaptchaVerifier
+                phoneNumber,
+                appVerifier
             );
 
             console.log(response)
@@ -191,7 +189,7 @@ const TaiKhoan = () => {
             // recaptchaVerifier.render();
 
             SetFormDk(false)
-            setSoDtDangNhap(number.replace('+84', '0'))
+            setSoDtDangNhap(phoneNumber.replace('+84', '0'))
 
         }
     };
@@ -362,7 +360,7 @@ const TaiKhoan = () => {
                                 <>
                                     <h3>Đăng ký tài khoản</h3>
                                     <div className="myForm">
-                                        <form action="">
+                                        <form action="" id="myRecaptcha">
 
                                             <>
                                                 <div className="formDk" style={{ display: formDk ? "block" : "none" }}>
