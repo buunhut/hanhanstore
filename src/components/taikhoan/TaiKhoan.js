@@ -166,7 +166,14 @@ const TaiKhoan = () => {
             //     }
             // });
 
-            const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {});
+            const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {
+                'size': 'invisible',
+                'callback': (response) => {
+                    // reCAPTCHA solved, allow signInWithPhoneNumber.
+                    // onSignInSubmit();
+                    console.log("first" + response)
+                }
+            });
 
             // recaptchaVerifier.render()
 
