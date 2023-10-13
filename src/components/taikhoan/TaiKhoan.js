@@ -108,6 +108,8 @@ const TaiKhoan = () => {
 
 
 
+
+
     const handleDangKy = async () => {
         let isValid = true;
         //check soDt
@@ -165,8 +167,11 @@ const TaiKhoan = () => {
             // });
 
             const recaptchaVerifier = new RecaptchaVerifier(auth, 'dangKyBtn', {
-                size: 'invisible',
+                'size': 'invisible',
             });
+
+            recaptchaVerifier.render()
+
 
             const response = await signInWithPhoneNumber(
                 auth,
@@ -489,6 +494,7 @@ const TaiKhoan = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
