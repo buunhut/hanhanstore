@@ -105,6 +105,9 @@ const TaiKhoan = () => {
         }
     };
 
+
+
+
     const handleDangKy = async () => {
         let isValid = true;
         //check soDt
@@ -142,17 +145,23 @@ const TaiKhoan = () => {
             return;
         }
 
+
         if (isValid) {
+            const number = userDangKy.soDt;
             const recaptchaVerifier = new RecaptchaVerifier(auth, 'reCaptcha', {
+
                 // 'size': 'normal',
                 'callback': async () => {
                     setShowXacNhanOtp(true)
                     const response = await signInWithPhoneNumber(
-                        userDangKy.soDt,
                         auth,
+                        number,
                         recaptchaVerifier
+
                     );
                     setConfirmObj(response);
+
+                    console.log("sent otp")
                 }
             });
 
@@ -160,6 +169,7 @@ const TaiKhoan = () => {
             recaptchaVerifier.render();
 
             SetFormDk(false)
+            setSoDtDangNhap(number.replace('+84', '0'))
 
         }
     };
