@@ -13,7 +13,35 @@ import { message } from "antd";
 
 const Search = () => {
     const dispath = useDispatch();
+    useEffect(() => {
+        dispath(login());
+    }, []);
+
+
+    //lấy dữ liệu từ redex store
+    const { isLogin, user } = useSelector((state) => state.dangNhap);
+
     const { gioHang } = useSelector((state) => state.gioHang);
+
+    const [thongTinDatHang, setThongTinDatHang] = useState({
+        tenKhachHang: "",
+        soDt: "",
+        diaChi: "",
+        ghiChu: "",
+        hinhThucTT: "",
+    });
+    useEffect(() => {
+        setThongTinDatHang({
+            tenKhachHang: user.tenNguoiDung,
+            soDt: user.soDt?.replace("+84", "0"),
+            diaChi: user.diaChi,
+            ghiChu: "",
+            hinhThucTT: "tiền mặt",
+        });
+    }, [user]);
+
+    console.log(thongTinDatHang);
+
     const sumSoLuong = gioHang.reduce((total, item) => {
         return total + item.soLuong;
     }, 0);
@@ -32,6 +60,7 @@ const Search = () => {
         setShowGioHang(true);
         lockScroll();
     };
+
     const handleDongGioHang = () => {
         setShowGioHang(false);
         unlockScroll();
@@ -47,12 +76,6 @@ const Search = () => {
     const handleXoaDatHang = (id) => {
         dispath(xoaDatHang(id));
     };
-
-    useEffect(() => {
-        dispath(login());
-    }, []);
-
-    const { isLogin, user } = useSelector((state) => state.dangNhap);
 
     const [showXacNhan, setShowXacNhan] = useState(false);
 
@@ -70,9 +93,9 @@ const Search = () => {
 
     const handleXacNhanDonHang = () => {
         const dataDonHang = {
-            thongTinDatHang,
+            // user,
             gioHang,
-            hinhThucTT
+            thongTinDatHang
         };
         dispath(datHangNgay(dataDonHang));
         message.success("Đặt hàng thành công", 3);
@@ -81,18 +104,13 @@ const Search = () => {
         unlockScroll();
     };
 
-    const [thongTinDatHang, setThongTinDatHang] = useState(user)
-
-
-
     const handleInputChange = (event) => {
-        const { id, value } = event.target
-        setThongTinDatHang((preState) => ({
-            ...thongTinDatHang,
-            [id]: value
-        }))
+        const { id, value } = event.target;
+        setThongTinDatHang((prevState) => ({
+            ...prevState,
+            [id]: value,
+        }));
     };
-
 
     return (
         <div id="search">
@@ -116,7 +134,7 @@ const Search = () => {
             <div
                 id="overlay"
                 className={showGioHang ? "show" : null}
-                onClick={handleDongGioHang}
+            // onClick={handleDongGioHang}
             ></div>
 
             <div id="gioHang" className={showGioHang ? "show" : null}>
@@ -176,15 +194,25 @@ const Search = () => {
                 <div className="bottom">
                     <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
 
-                    {isLogin ? (
-                        <button type="button" onClick={handleDangHangNgay}>
-                            Đặt hàng ngay
-                        </button>
-                    ) : (
-                        <button type="button">
-                            <NavLink to="/tai-khoan">Đăng nhập</NavLink>
-                        </button>
-                    )}
+                    {
+                        isLogin ? (
+                            <>
+                                {sumSoLuong > 0 ? (
+                                    <button type="button" onClick={handleDangHangNgay}>
+                                        Đặt hàng ngay
+                                    </button>
+                                ) : (
+                                    <button type="button" onClick={handleDongGioHang}>
+                                        Tiếp tục mua sắm
+                                    </button>
+                                )}
+                            </>
+                        ) : (
+                            <button type="button">
+                                <NavLink to="/tai-khoan">Đăng nhập</NavLink>
+                            </button>
+                        )
+                    }
                 </div>
 
                 {showXacNhan ? (
@@ -198,11 +226,14 @@ const Search = () => {
                     <div className="tenNguoiDung">
                         <div className="inputItem">
                             <input
-                                id="tenNguoiDung"
-                                name="tenNguoiDung"
+                                id="tenKhachHang"
+                                name="tenKhachHang"
                                 type="text"
-                                value={thongTinDatHang.tenNguoiDung}
-                                onChange={handleInputChange}
+                                value={
+                                    thongTinDatHang.tenKhachHang
+                                }
+                                disabled
+                            // onChange={handleInputChange}
                             />
                             <i className="fa-solid fa-user"></i>
                         </div>
@@ -211,9 +242,11 @@ const Search = () => {
                                 id="soDt"
                                 name="soDt"
                                 type="text"
-                                value={thongTinDatHang.soDt?.replace("+84", "0")}
-                                onChange={handleInputChange}
-
+                                value={
+                                    thongTinDatHang.soDt
+                                }
+                                disabled
+                            // onChange={handleInputChange}
                             />
                             <i className="fa-solid fa-phone"></i>
                         </div>
@@ -222,16 +255,17 @@ const Search = () => {
                                 id="diaChi"
                                 name="diaChi"
                                 type="text"
-                                value={thongTinDatHang.diaChi}
+                                value={
+                                    thongTinDatHang.diaChi
+                                }
                                 onChange={handleInputChange}
-
                             />
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
                     </div>
                     <div className="ghiChu">
                         <label htmlFor="ghiChu">Ghi Chú</label>
-                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3"></textarea>
+                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea>
                     </div>
 
                     <h3>Thông tin đơn hàng</h3>
@@ -256,10 +290,10 @@ const Search = () => {
                             <p>Hình thức thanh toán:</p>
                             <div className="hinhThucThanhToan">
                                 <select
-                                    name="hinhThucThanhToan"
-                                    id="hinhThucThanhToan"
+                                    name="hinhThucTT"
+                                    id="hinhThucTT"
                                     className="custom-select"
-                                    onChange={handleHinhThucTT}
+                                    onChange={handleInputChange}
                                 >
                                     <option value="tiền mặt">Tiền mặt</option>
                                     <option value="chuyển khoản">Chuyển khoản</option>
@@ -270,7 +304,7 @@ const Search = () => {
                         <div
                             id="thongTinTk"
                             style={{
-                                display: hinhThucTT === "chuyển khoản" ? "block" : "none",
+                                display: thongTinDatHang.hinhThucTT === "chuyển khoản" ? "block" : "none",
                             }}
                         >
                             <p>Số tài khoản: 999 999 999</p>
