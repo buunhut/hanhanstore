@@ -141,6 +141,10 @@ const TaiKhoan = () => {
         }
 
         if (isValid) {
+            SetFormDk(false);
+
+            setShowXacNhanOtp(true);
+
             const number = userDangKy.soDt;
             console.log("yêu cầu gửi otp")
             if (!window.recaptchaVerifier) {
@@ -161,19 +165,13 @@ const TaiKhoan = () => {
             signInWithPhoneNumber(auth, number, appAppverifier)
                 .then((confirnmationResult) => {
                     window.confirnmationResult = confirnmationResult
-                    // console.log(confirnmationResult)
-
-                    setShowXacNhanOtp(true);
-                    SetFormDk(false);
+                    console.log(confirnmationResult)
+                    // setShowXacNhanOtp(true);
+                    // SetFormDk(false);
                     setSoDtDangNhap(number.replace("+84", "0"));
                 }).catch((error) => {
                     console.log(error)
                 })
-
-
-
-
-
         }
     };
 
@@ -193,12 +191,8 @@ const TaiKhoan = () => {
                         tenNguoiDung: "",
                         diaChi: "",
                     });
-                    setDangKy(false);
                     setShowXacNhanOtp(false);
-
-
-
-
+                    setDangKy(false);
                 }).catch((err) => {
                     message.error("OTP không hợp lệ, đănh ký thất bại");
 
