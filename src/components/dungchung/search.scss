@@ -375,15 +375,17 @@
               text-align: right;
             }
 
-            .custom-select {
-              appearance: none; /* Remove the default arrow */
-              background: transparent; /* Optional: Use a custom background */
-              padding: 5px; /* Adjust padding as needed */
-              border: none; /* Remove border if not needed */
-              cursor: pointer; /* Add a pointer cursor for better user interaction */
-              outline: none; /* Remove outline on focus */
-              font-size: 16px; /* Set the font size as needed */
-            }
+            // .custom-select {
+            //   appearance: none; /* Remove the default arrow */
+            //   background: transparent; /* Optional: Use a custom background */
+            //   border: none; /* Remove border if not needed */
+            //   outline: none; /* Remove outline on focus */
+            //   padding: 2px 4px;
+            //   font-size: 16px;
+            //   font-weight: 400;
+            //   text-align: right;
+            //   cursor: pointer; /* Add a pointer cursor for better user interaction */
+            // }
           }
         }
         #thongTinTk {
