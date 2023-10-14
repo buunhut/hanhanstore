@@ -20,6 +20,13 @@ const Search = () => {
     const sumThanhTien = gioHang.reduce((total, item) => {
         return total + item.thanhTien;
     }, 0);
+    const phiShip = 0;
+
+    const [hinhThucTT, setHinhThucTT] = useState('tiền mặt')
+    const handleHinhThucTT = (event) => {
+        setHinhThucTT(event.target.value)
+    }
+
     const [showGioHang, setShowGioHang] = useState(false);
     const handleGioHang = () => {
         setShowGioHang(!showGioHang);
@@ -160,6 +167,7 @@ const Search = () => {
                 </div>
 
                 {showXacNhan ? (
+
                     <div id="confirm" onClick={handleDangHangNgay}></div>
                 ) : null}
                 <div id="main" className={showXacNhan ? "show" : null}>
@@ -178,7 +186,7 @@ const Search = () => {
                             <i className="fa-solid fa-user"></i>
                         </div>
                         <div className="inputItem">
-                            <input id="soDt" name="soDt" type="text" value={user.soDt} />
+                            <input id="soDt" name="soDt" type="text" value={user.soDt?.replace('+84', '0')} />
                             <i className="fa-solid fa-phone"></i>
                         </div>
                         <div className="inputItem">
@@ -193,17 +201,39 @@ const Search = () => {
                     </div>
                     <div className="ghiChu">
                         <label htmlFor="ghiChu">Ghi Chú</label>
-                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="5"></textarea>
+                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3"></textarea>
                     </div>
+                    <p className="chiTiet">Chi tiết</p>
                     <div className="thanhToan">
-                        <p>Thanh toán khi nhận hàng: <b> {sumThanhTien.toLocaleString() + "đ"} </b></p>
+                        <div className="thanhToanItem"><span>Tiền hàng:</span> <p> {sumThanhTien.toLocaleString() + "đ"} </p></div>
+                        <div className="thanhToanItem"><span>Phí ship: </span><p> {phiShip.toLocaleString() + "đ"} </p></div>
+                        <div className="thanhToanItem"><span>Tổng thanh toán: </span><p> {(sumThanhTien + phiShip).toLocaleString() + "đ"} </p></div>
+                        <div className="thanhToanItem"><p>Hình thức thanh toán:</p>
+                            <div className="hinhThucThanhToan">
+                                <select name="hinhThucThanhToan" id="hinhThucThanhToan" onChange={handleHinhThucTT}>
+                                    <option value="tiền mặt">Tiền mặt</option>
+                                    <option value="chuyển khoản">Chuyển khoản</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="thongTinTk" style={{ display: hinhThucTT === 'chuyển khoản' ? 'block' : 'none' }}>
+                            <p>Số tài khoản: 999 999 999</p>
+                            <p>Chủ tài khoản: Trương Bửu Lập</p>
+                            <p>Ngân hàng: BA TIGER - CN Bạc Liêu</p>
+                        </div>
+
+
+
+
+
                     </div>
                     <div className="myBtn">
                         <button type="button" onClick={handleXacNhanDonHang}> Xác nhận đơn hàng</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
