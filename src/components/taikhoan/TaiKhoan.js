@@ -142,6 +142,7 @@ const TaiKhoan = () => {
 
         if (isValid) {
             const number = userDangKy.soDt;
+            console.log("yêu cầu gửi otp")
             if (!window.recaptchaVerifier) {
                 window.recaptchaVerifier = new RecaptchaVerifier(
                     auth,
