@@ -22,14 +22,19 @@ const Search = () => {
     }, 0);
     const phiShip = 0;
 
-    const [hinhThucTT, setHinhThucTT] = useState('tiền mặt')
+    const [hinhThucTT, setHinhThucTT] = useState("tiền mặt");
     const handleHinhThucTT = (event) => {
-        setHinhThucTT(event.target.value)
-    }
+        setHinhThucTT(event.target.value);
+    };
 
     const [showGioHang, setShowGioHang] = useState(false);
     const handleGioHang = () => {
-        setShowGioHang(!showGioHang);
+        setShowGioHang(true);
+        lockScroll();
+    };
+    const handleDongGioHang = () => {
+        setShowGioHang(false);
+        unlockScroll();
     };
 
     const handleGiamSoLuong = (id) => {
@@ -51,21 +56,43 @@ const Search = () => {
 
     const [showXacNhan, setShowXacNhan] = useState(false);
 
+    const lockScroll = () => {
+        document.body.style.overflow = "hidden";
+    };
+    const unlockScroll = () => {
+        document.body.style.overflow = "auto";
+    };
+
     const handleDangHangNgay = () => {
         setShowXacNhan(!showXacNhan);
+        lockScroll();
     };
 
     const handleXacNhanDonHang = () => {
         const dataDonHang = {
-            user,
+            thongTinDatHang,
             gioHang,
-        }
-        dispath(datHangNgay(dataDonHang))
-        message.success('Đặt hàng thành công', 3)
+            hinhThucTT
+        };
+        dispath(datHangNgay(dataDonHang));
+        message.success("Đặt hàng thành công", 3);
 
-        handleDangHangNgay()
-        handleGioHang()
-    }
+        handleDangHangNgay();
+        unlockScroll();
+    };
+
+    const [thongTinDatHang, setThongTinDatHang] = useState(user)
+
+
+
+    const handleInputChange = (event) => {
+        const { id, value } = event.target
+        setThongTinDatHang((preState) => ({
+            ...thongTinDatHang,
+            [id]: value
+        }))
+    };
+
 
     return (
         <div id="search">
@@ -89,16 +116,19 @@ const Search = () => {
             <div
                 id="overlay"
                 className={showGioHang ? "show" : null}
-                onClick={handleGioHang}
+                onClick={handleDongGioHang}
             ></div>
 
             <div id="gioHang" className={showGioHang ? "show" : null}>
                 <div className="top">
-                    <i className="fa-solid fa-angle-right" onClick={handleGioHang}></i>
+                    <i
+                        className="fa-solid fa-angle-right"
+                        onClick={handleDongGioHang}
+                    ></i>
                     <div>
                         <p>Giỏ hàng của bạn ({sumSoLuong.toLocaleString()})</p>
                     </div>
-                    <button type="button" onClick={handleGioHang}>
+                    <button type="button" onClick={handleDongGioHang}>
                         Đóng
                     </button>
                 </div>
@@ -146,28 +176,18 @@ const Search = () => {
                 <div className="bottom">
                     <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
 
-                    {
-                        isLogin ? (
-                            <button type="button" onClick={handleDangHangNgay}>
-                                Đặt hàng ngay
-                            </button>
-
-
-                        ) : (
-                            <button type="button">
-                                <NavLink to='/tai-khoan'>
-                                    Đăng nhập
-                                </NavLink>
-                            </button>
-
-
-                        )
-                    }
-
+                    {isLogin ? (
+                        <button type="button" onClick={handleDangHangNgay}>
+                            Đặt hàng ngay
+                        </button>
+                    ) : (
+                        <button type="button">
+                            <NavLink to="/tai-khoan">Đăng nhập</NavLink>
+                        </button>
+                    )}
                 </div>
 
                 {showXacNhan ? (
-
                     <div id="confirm" onClick={handleDangHangNgay}></div>
                 ) : null}
                 <div id="main" className={showXacNhan ? "show" : null}>
@@ -181,12 +201,20 @@ const Search = () => {
                                 id="tenNguoiDung"
                                 name="tenNguoiDung"
                                 type="text"
-                                value={user.tenNguoiDung}
+                                value={thongTinDatHang.tenNguoiDung}
+                                onChange={handleInputChange}
                             />
                             <i className="fa-solid fa-user"></i>
                         </div>
                         <div className="inputItem">
-                            <input id="soDt" name="soDt" type="text" value={user.soDt?.replace('+84', '0')} />
+                            <input
+                                id="soDt"
+                                name="soDt"
+                                type="text"
+                                value={thongTinDatHang.soDt?.replace("+84", "0")}
+                                onChange={handleInputChange}
+
+                            />
                             <i className="fa-solid fa-phone"></i>
                         </div>
                         <div className="inputItem">
@@ -194,7 +222,9 @@ const Search = () => {
                                 id="diaChi"
                                 name="diaChi"
                                 type="text"
-                                value={user.diaChi}
+                                value={thongTinDatHang.diaChi}
+                                onChange={handleInputChange}
+
                             />
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
@@ -203,37 +233,60 @@ const Search = () => {
                         <label htmlFor="ghiChu">Ghi Chú</label>
                         <textarea name="ghiChu" id="ghiChu" cols="50" rows="3"></textarea>
                     </div>
-                    <p className="chiTiet">Chi tiết</p>
+
+                    <h3>Thông tin đơn hàng</h3>
                     <div className="thanhToan">
-                        <div className="thanhToanItem"><span>Tiền hàng:</span> <p> {sumThanhTien.toLocaleString() + "đ"} </p></div>
-                        <div className="thanhToanItem"><span>Phí ship: </span><p> {phiShip.toLocaleString() + "đ"} </p></div>
-                        <div className="thanhToanItem"><span>Tổng thanh toán: </span><p> {(sumThanhTien + phiShip).toLocaleString() + "đ"} </p></div>
-                        <div className="thanhToanItem"><p>Hình thức thanh toán:</p>
+                        <div className="thanhToanItem">
+                            <span>Tiền hàng:</span>{" "}
+                            <p> {sumThanhTien.toLocaleString() + "đ"} </p>
+                        </div>
+                        <div className="thanhToanItem">
+                            <span>Phí ship: </span>
+                            <p> {phiShip.toLocaleString() + "đ"} </p>
+                        </div>
+                        <div className="thanhToanItem">
+                            <span>
+                                <b>Tổng thanh toán:</b>{" "}
+                            </span>
+                            <p>
+                                <b>{(sumThanhTien + phiShip).toLocaleString() + "đ"}</b>{" "}
+                            </p>
+                        </div>
+                        <div className="thanhToanItem">
+                            <p>Hình thức thanh toán:</p>
                             <div className="hinhThucThanhToan">
-                                <select name="hinhThucThanhToan" id="hinhThucThanhToan" onChange={handleHinhThucTT}>
+                                <select
+                                    name="hinhThucThanhToan"
+                                    id="hinhThucThanhToan"
+                                    className="custom-select"
+                                    onChange={handleHinhThucTT}
+                                >
                                     <option value="tiền mặt">Tiền mặt</option>
                                     <option value="chuyển khoản">Chuyển khoản</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div id="thongTinTk" style={{ display: hinhThucTT === 'chuyển khoản' ? 'block' : 'none' }}>
+                        <div
+                            id="thongTinTk"
+                            style={{
+                                display: hinhThucTT === "chuyển khoản" ? "block" : "none",
+                            }}
+                        >
                             <p>Số tài khoản: 999 999 999</p>
                             <p>Chủ tài khoản: Trương Bửu Lập</p>
                             <p>Ngân hàng: BA TIGER - CN Bạc Liêu</p>
                         </div>
-
-
-
-
-
                     </div>
                     <div className="myBtn">
-                        <button type="button" onClick={handleXacNhanDonHang}> Xác nhận đơn hàng</button>
+                        <button type="button" onClick={handleXacNhanDonHang}>
+                            {" "}
+                            Xác nhận đơn hàng
+                        </button>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 
