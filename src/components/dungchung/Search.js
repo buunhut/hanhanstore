@@ -48,7 +48,10 @@ const Search = () => {
     const sumThanhTien = gioHang.reduce((total, item) => {
         return total + item.thanhTien;
     }, 0);
-    const phiShip = 0;
+    let phiShip = 20000
+    if (sumThanhTien >= 300000) {
+        phiShip = 0
+    }
 
     const [hinhThucTT, setHinhThucTT] = useState("tiền mặt");
     const handleHinhThucTT = (event) => {
