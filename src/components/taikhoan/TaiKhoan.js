@@ -11,10 +11,6 @@ import "react-phone-number-input/style.css";
 import { auth } from "../../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-
-
-
-
 const TaiKhoan = () => {
     const dispath = useDispatch();
     useEffect(() => {
@@ -26,7 +22,6 @@ const TaiKhoan = () => {
     const [showXacNhanOtp, setShowXacNhanOtp] = useState(false);
     const [otp, setOtp] = useState("");
     const [alertOtp, setAlertOtp] = useState("");
-    const [confirmObj, setConfirmObj] = useState("");
 
     const [userDangKy, setUserDangKy] = useState({
         soDt: "",
@@ -40,13 +35,14 @@ const TaiKhoan = () => {
         diaChi: "",
     });
 
-    const [formDk, SetFormDk] = useState(true)
+    const [formDk, SetFormDk] = useState(true);
 
     // Perform additional validation (e.g., special characters in tenNguoiDung and digits in soDt)
     const specialChars = /[!@#$%^&*(),.?":{}|<>]/;
 
     const handleShowDangKy = () => {
-        setDangKy(!dangKy);
+        setDangKy(true)
+        SetFormDk(true)
     };
 
     const handleChangeInputDangKy = (event) => {
@@ -105,12 +101,9 @@ const TaiKhoan = () => {
         }
     };
 
-
-
-
-
-
     const handleDangKy = async () => {
+
+
         let isValid = true;
         //check soDt
         if (userDangKy.soDt === "" || userDangKy.soDt === undefined) {
@@ -147,66 +140,38 @@ const TaiKhoan = () => {
             return;
         }
 
-
         if (isValid) {
-            const phoneNumber = userDangKy.soDt;
-            // const recaptchaVerifier = new RecaptchaVerifier(auth, 'reCaptcha', {
+            const number = userDangKy.soDt;
+            if (!window.recaptchaVerifier) {
+                window.recaptchaVerifier = new RecaptchaVerifier(
+                    auth,
+                    'recaptcha-container',
+                    {
+                        size: 'invisible',
+                        callback: (response) => {
+                            // console.log("respone" + response)
+                            handleDangKy()
+                        },
+                        'expired-callback': () => { }
+                    },
+                );
+            }
+            const appAppverifier = window.recaptchaVerifier
+            signInWithPhoneNumber(auth, number, appAppverifier)
+                .then((confirnmationResult) => {
+                    window.confirnmationResult = confirnmationResult
+                    // console.log(confirnmationResult)
 
-            //     'size': 'normal',
-            //     'callback': async () => {
-            //         setShowXacNhanOtp(true)
-            //         // const response = await signInWithPhoneNumber(
-            //         //     auth,
-            //         //     number,
-            //         //     recaptchaVerifier
-            //         // );
-            //         // setConfirmObj(response);
-
-            //         console.log("sent otp")
-            //     }
-            // });
-
-            const appVerifier = new RecaptchaVerifier(auth, 'myRecaptcha', {
-                'size': 'invisible',
-                'callback': async (response) => {
-                    // reCAPTCHA solved, allow signInWithPhoneNumber.
-                    // onSignInSubmit();
-                    // console.log("first" + response)
-                    // const result = await signInWithPhoneNumber(
-                    //     auth,
-                    //     phoneNumber,
-                    //     appVerifier
-                    // );
-                    // console.log(result)
-                    // setConfirmObj(result);
-                    // setShowXacNhanOtp(true)
-                    console.log(response)
-
-                }
-            });
-
-            // appVerifier.render()
-
-            console.log(appVerifier)
-
-            const result = await signInWithPhoneNumber(
-                auth,
-                phoneNumber,
-                appVerifier
-            );
-
-            console.log(result)
-            setConfirmObj(result);
-
-            setShowXacNhanOtp(true)
+                    setShowXacNhanOtp(true);
+                    SetFormDk(false);
+                    setSoDtDangNhap(number.replace("+84", "0"));
+                }).catch((error) => {
+                    console.log(error)
+                })
 
 
 
-            // console.log(recaptchaVerifier)
-            // recaptchaVerifier.render();
 
-            SetFormDk(false)
-            setSoDtDangNhap(phoneNumber.replace('+84', '0'))
 
         }
     };
@@ -217,21 +182,27 @@ const TaiKhoan = () => {
         } else {
             setAlertOtp("");
             // console.log("code kiểm tra otp")
-            try {
-                await confirmObj.confirm(otp);
-                //lưu vào csdl 
+            window.confirnmationResult.confirm(otp)
+                .then((res) => {
+                    // console.log(res.user.phoneNumber)
+                    message.success("OTP hợp lệ, đăng ký thành công, viết code lưu thông tin đăng ký vào csdl tại đây", 10);
+                    setOtp("");
+                    setUserDangKy({
+                        soDt: "",
+                        tenNguoiDung: "",
+                        diaChi: "",
+                    });
+                    setDangKy(false);
+                    setShowXacNhanOtp(false);
 
-                message.success("OTP hợp lệ, đăng ký thành công");
-                setOtp("");
-                setUserDangKy({
-                    soDt: "",
-                    tenNguoiDung: "",
-                    diaChi: "",
-                });
-                handleShowDangKy();
-            } catch (error) {
-                message.error("OTP không hợp lệ, đănh ký thất bại");
-            }
+
+
+
+                }).catch((err) => {
+                    message.error("OTP không hợp lệ, đănh ký thất bại");
+
+                    console.log(err)
+                })
         }
     };
 
@@ -240,7 +211,6 @@ const TaiKhoan = () => {
     const [alertDangNhap, setAlertDangNhap] = useState("");
 
     const handleChangeInputDangNhap = (value) => {
-
         if (value === "" || value === undefined) {
             setAlertDangNhap("Vui lòng nhập số điện thoại");
         } else {
@@ -312,6 +282,8 @@ const TaiKhoan = () => {
             <div id="main">
                 <div className="container">
                     <div className="content">
+                        <div id="recaptcha-container" style={{ display: "none" }} />
+
                         {isLogin ? (
                             //đã đăng nhập
                             <>
@@ -371,152 +343,146 @@ const TaiKhoan = () => {
                                     </div>
                                 </div>
                             </>
-                        ) :
+                        ) : dangKy ? (
+                            <>
+                                <h3>Đăng ký tài khoản</h3>
+                                <div className="myForm">
+                                    <form action="">
+                                        <>
+                                            <div
+                                                className="formDk"
+                                                style={{ display: formDk ? "block" : "none" }}
+                                            >
+                                                <div className="inputItem">
+                                                    <PhoneInput
+                                                        defaultCountry="VN"
+                                                        placeholder="Số điện thoại"
+                                                        value={userDangKy.soDt}
+                                                        onChange={(value) => handleChangeInputSoDt(value)}
+                                                        countries={["VN"]}
+                                                        international={false} // Đặt international thành false để ẩn quốc gia
+                                                    />
+                                                    <i className="fa-solid fa-phone"></i>
+                                                </div>
+                                                {alert.soDt !== "" ? (
+                                                    <p className="alert">{alertDangKy.soDt}</p>
+                                                ) : null}
+                                                <div className="inputItem">
+                                                    <input
+                                                        id="tenNguoiDung"
+                                                        name="tenNguoiDung"
+                                                        value={userDangKy.tenNguoiDung}
+                                                        onChange={handleChangeInputDangKy}
+                                                        type="text"
+                                                        placeholder="Họ và tên"
+                                                    />
+                                                    <i className="fa-solid fa-user"></i>
+                                                </div>
+                                                {alert.tenNguoiDung !== "" ? (
+                                                    <p className="alert">{alertDangKy.tenNguoiDung}</p>
+                                                ) : null}
+                                                <div className="inputItem">
+                                                    <input
+                                                        id="diaChi"
+                                                        name="diaChi"
+                                                        value={userDangKy.diaChi}
+                                                        onChange={handleChangeInputDangKy}
+                                                        type="text"
+                                                        placeholder="Địa chỉ"
+                                                    />
+                                                    <i className="fa-solid fa-location-dot"></i>
+                                                </div>
+                                                {alertDangKy.diaChi !== "" ? (
+                                                    <p className="alert">{alertDangKy.diaChi}</p>
+                                                ) : null}
 
-                            dangKy ? (
-                                <>
-                                    <h3>Đăng ký tài khoản</h3>
-                                    <div className="myForm">
-                                        <form action="">
-
-                                            <>
-                                                <div className="formDk" style={{ display: formDk ? "block" : "none" }}>
-                                                    <div className="inputItem">
-                                                        <PhoneInput
-                                                            defaultCountry="VN"
-                                                            placeholder="Số điện thoại"
-                                                            value={userDangKy.soDt}
-                                                            onChange={(value) => handleChangeInputSoDt(value)}
-                                                            countries={["VN"]}
-                                                            international={false} // Đặt international thành false để ẩn quốc gia
-                                                        />
-                                                        <i className="fa-solid fa-phone"></i>
-                                                    </div>
-                                                    {alert.soDt !== "" ? (
-                                                        <p className="alert">{alertDangKy.soDt}</p>
-                                                    ) : null}
-                                                    <div className="inputItem">
-                                                        <input
-                                                            id="tenNguoiDung"
-                                                            name="tenNguoiDung"
-                                                            value={userDangKy.tenNguoiDung}
-                                                            onChange={handleChangeInputDangKy}
-                                                            type="text"
-                                                            placeholder="Họ và tên"
-                                                        />
-                                                        <i className="fa-solid fa-user"></i>
-                                                    </div>
-                                                    {alert.tenNguoiDung !== "" ? (
-                                                        <p className="alert">{alertDangKy.tenNguoiDung}</p>
-                                                    ) : null}
-                                                    <div className="inputItem">
-                                                        <input
-                                                            id="diaChi"
-                                                            name="diaChi"
-                                                            value={userDangKy.diaChi}
-                                                            onChange={handleChangeInputDangKy}
-                                                            type="text"
-                                                            placeholder="Địa chỉ"
-                                                        />
-                                                        <i className="fa-solid fa-location-dot"></i>
-                                                    </div>
-                                                    {alertDangKy.diaChi !== "" ? (
-                                                        <p className="alert">{alertDangKy.diaChi}</p>
-                                                    ) : null}
-
-
-                                                    <div className="myBtn">
-                                                        <button id="dangKyBtn" type="button" onClick={handleDangKy}>
-                                                            Đăng ký
-                                                        </button>
-                                                    </div>
-                                                    <div id="myRecaptcha" />
-
-
+                                                <div className="myBtn">
+                                                    <button
+                                                        id="dangKyBtn"
+                                                        type="button"
+                                                        onClick={handleDangKy}
+                                                    >
+                                                        Đăng ký
+                                                    </button>
                                                 </div>
 
+                                                <p onClick={() => { setDangKy(false) }}>
+                                                    Quay về trang đăng nhập
+                                                </p>
+                                            </div>
 
-                                                <div className="formXacMinh">
-
-
-                                                    {/* {
+                                            <div className="formXacMinh">
+                                                {/* {
                                                         formDk ? null : (<h3>Vui lòng xác minh bước 1...</h3>)
                                                     }
                                                     <div id="reCaptcha" /> */}
-                                                    <div className="xacMinhOtp" style={{ display: showXacNhanOtp ? "block" : "none" }}>
-                                                        {/* <h3>Vui lòng xác minh OTP...</h3> */}
-                                                        <div className="inputItem">
-                                                            <input
-                                                                id="otp"
-                                                                name="otp"
-                                                                value={otp}
-                                                                onChange={(e) => setOtp(e.target.value)} // Sửa đoạn này
-                                                                type="text"
-                                                                placeholder="Nhập mã OTP"
-                                                            />
-                                                            <i className="fa-solid fa-key"></i>
-                                                        </div>
-                                                        {alertOtp !== "" ? (
-                                                            <p className="alert">{alertOtp}</p>
-                                                        ) : null}
-
-                                                        <div className="myBtn">
-                                                            <button type="button" onClick={handleXacNhanOtp}>
-                                                                Xác nhận OTP
-                                                            </button>
-                                                        </div>
+                                                <div
+                                                    className="xacMinhOtp"
+                                                    style={{ display: showXacNhanOtp ? "block" : "none" }}
+                                                >
+                                                    {/* <h3>Vui lòng xác minh OTP...</h3> */}
+                                                    <div className="inputItem">
+                                                        <input
+                                                            id="otp"
+                                                            name="otp"
+                                                            value={otp}
+                                                            onChange={(e) => setOtp(e.target.value)} // Sửa đoạn này
+                                                            type="text"
+                                                            placeholder="Nhập mã OTP"
+                                                        />
+                                                        <i className="fa-solid fa-key"></i>
                                                     </div>
+                                                    {alertOtp !== "" ? (
+                                                        <p className="alert">{alertOtp}</p>
+                                                    ) : null}
 
-
-
+                                                    <div className="myBtn">
+                                                        <button type="button" onClick={handleXacNhanOtp}>
+                                                            Xác nhận OTP
+                                                        </button>
+                                                    </div>
                                                 </div>
-
-
-
-
-
-
-                                            </>
-                                            {/* )} */}
-                                        </form>
+                                            </div>
+                                        </>
+                                        {/* )} */}
+                                    </form>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <h3>Đăng nhập</h3>
+                                <div className="myForm">
+                                    <div className="inputItem">
+                                        <PhoneInput
+                                            defaultCountry="VN"
+                                            placeholder="Số điện thoại"
+                                            value={soDtDangNhap}
+                                            onChange={(value) => handleChangeInputDangNhap(value)}
+                                            countries={["VN"]}
+                                            international={false} // Đặt international thành false để ẩn quốc gia
+                                        />
+                                        <i className="fa-solid fa-phone"></i>
                                     </div>
-                                </>
-                            ) : (
-                                <>
-                                    <h3>Đăng nhập</h3>
-                                    <div className="myForm">
-                                        <div className="inputItem">
+                                    {alertDangNhap !== "" ? (
+                                        <p className="alert">{alertDangNhap}</p>
+                                    ) : null}
 
-                                            <PhoneInput
-                                                defaultCountry="VN"
-                                                placeholder="Số điện thoại"
-                                                value={soDtDangNhap}
-                                                onChange={(value) => handleChangeInputDangNhap(value)}
-                                                countries={["VN"]}
-                                                international={false} // Đặt international thành false để ẩn quốc gia
-                                            />
-                                            <i className="fa-solid fa-phone"></i>
-                                        </div>
-                                        {alertDangNhap !== "" ? (
-                                            <p className="alert">{alertDangNhap}</p>
-                                        ) : null}
-
-                                        <div className="myBtn">
-                                            <button type="button" onClick={handleDangNhap}>
-                                                {" "}
-                                                Đăng nhập
-                                            </button>
-                                        </div>
-                                        <p onClick={handleShowDangKy}>
-                                            Chưa có tài khoản, đăng ký ngay
-                                        </p>
+                                    <div className="myBtn">
+                                        <button type="button" onClick={handleDangNhap}>
+                                            {" "}
+                                            Đăng nhập
+                                        </button>
                                     </div>
-                                </>
-                            )}
+                                    <p onClick={handleShowDangKy}>
+                                        Chưa có tài khoản, đăng ký ngay
+                                    </p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };
