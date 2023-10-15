@@ -30,9 +30,8 @@ const Search = () => {
         ghiChu: "",
         hinhThucTT: "",
     });
-    const [diaChi, setDiaChi] = useState([])
+
     useEffect(() => {
-        setDiaChi(user.diaChi)
 
         setThongTinDatHang({
             tenKhachHang: user.tenNguoiDung,
@@ -45,6 +44,11 @@ const Search = () => {
     }, [user]);
 
     console.log(thongTinDatHang);
+
+
+
+
+
 
 
     const sumSoLuong = gioHang.reduce((total, item) => {
@@ -100,7 +104,7 @@ const Search = () => {
         if (thongTinDatHang.diaChi === '') {
             setThongTinDatHang((prevState) => ({
                 ...prevState,
-                diaChi: diaChi[0]
+                diaChi: user.listDiaChiNhanHang[0]
             }))
         }
         const dataDonHang = {
@@ -268,14 +272,22 @@ const Search = () => {
                                 list="listDiaChi"
                                 name="diaChi"
                                 id="diaChi"
-                                // defaultValue={diaChi[0]}
-                                placeholder="Địa chỉ nhận hàng"
+                                defaultValue={user.diaChi}
+                                // value={thongTinDatHang.diaChi}
+                                placeholder={"Nhập địa chỉ nhận hàng"}
                                 onChange={handleInputChange}
+                            // onClick={
+                            //     () => setThongTinDatHang((prevState) => ({
+                            //         ...prevState,
+                            //         diaChi: ""
+
+                            //     }))
+                            // }
                             />
 
                             <datalist id="listDiaChi">
                                 {
-                                    diaChi?.map((item, index) => {
+                                    user.listDiaChiNhanHang?.map((item, index) => {
                                         return <option value={item} key={index} />
                                     })
                                 }
@@ -284,10 +296,23 @@ const Search = () => {
 
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
-                    </div>
-                    <div className="ghiChu">
-                        <label htmlFor="ghiChu">Ghi Chú:</label>
-                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea>
+                        <div className="inputItem">
+                            <input
+                                id="ghiChu"
+                                name="ghiChu"
+                                type="text"
+                                value={
+                                    thongTinDatHang.ghiChu
+                                }
+                                placeholder="Ghi chú"
+
+                                onChange={handleInputChange}
+                            />
+                            <i className="fa-solid fa-pen"></i>
+                            {/* <label htmlFor="ghiChu">Ghi Chú:</label>
+                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea> */}
+                        </div>
+
                     </div>
 
                     <h3>Thông tin đơn hàng</h3>
@@ -308,6 +333,11 @@ const Search = () => {
                                 <b>{(sumThanhTien + phiShip).toLocaleString() + "đ"}</b>{" "}
                             </p>
                         </div>
+                        {/* <div className="thanhToanItem">
+                            <p> Địa chỉ: {thongTinDatHang.diaChi === '' ? diaChi : thongTinDatHang.diaChi}</p>
+                        </div> */}
+
+
                         <div className="thanhToanItem noBorder">
                             <p>Hình thức thanh toán:</p>
                             <div className="hinhThucThanhToan">
@@ -323,6 +353,7 @@ const Search = () => {
                             </div>
                         </div>
 
+
                         <div
                             id="thongTinTk"
                             style={{
@@ -333,6 +364,7 @@ const Search = () => {
                             <p>Chủ tài khoản: Trương Bửu Lập</p>
                             <p>Ngân hàng: BA TIGER - CN Bạc Liêu</p>
                         </div>
+
                     </div>
                     <div className="myBtn">
                         <button type="button" onClick={handleXacNhanDonHang}>

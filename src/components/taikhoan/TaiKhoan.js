@@ -191,6 +191,7 @@ const TaiKhoan = () => {
                         tenNguoiDung: "",
                         diaChi: "",
                     });
+                    console.log(userDangKy)
                     setShowXacNhanOtp(false);
                     setDangKy(false);
                 }).catch((err) => {
@@ -231,7 +232,8 @@ const TaiKhoan = () => {
                 const user = {
                     soDt: "+84919317710",
                     tenNguoiDung: "Trương Bửu Lập",
-                    diaChi: ["Chợ Cầu Số 2, Hoà Bình, Bạc Liêu", "Chung cư Ehome 3, 103 Hồ Học Lãm, Bình Tân", "Ấp 15 VMB, Hoà Bình, Bạc Liêu"],
+                    diaChi: "Chợ Cầu Số 2, Hoà Bình, Bạc Liêu",
+                    listDiaChiNhanHang: ["Chợ Cầu Số 2, Hoà Bình, Bạc Liêu", "địa chỉ 2", "địa chỉ 3"],
                     token: "TIGER",
                 };
 
@@ -296,7 +298,7 @@ const TaiKhoan = () => {
                                         </p>
                                         <p className="diaChi">
                                             <i className="fa-solid fa-location-dot"></i>
-                                            {user.diaChi[0]}
+                                            {user.diaChi}
                                         </p>
                                     </div>
                                 </div>
