@@ -104,7 +104,7 @@ const Search = () => {
         if (thongTinDatHang.diaChi === '') {
             setThongTinDatHang((prevState) => ({
                 ...prevState,
-                diaChi: user.listDiaChiNhanHang[0]
+                diaChi: user.diaChi
             }))
         }
         const dataDonHang = {
