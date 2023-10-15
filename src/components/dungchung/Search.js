@@ -116,7 +116,6 @@ const Search = () => {
         message.success("Đặt hàng thành công", 3);
 
         handleDangHangNgay();
-        unlockScroll();
     };
 
     const handleInputChange = (event) => {
@@ -296,22 +295,6 @@ const Search = () => {
 
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
-                        <div className="inputItem">
-                            <input
-                                id="ghiChu"
-                                name="ghiChu"
-                                type="text"
-                                value={
-                                    thongTinDatHang.ghiChu
-                                }
-                                placeholder="Ghi chú"
-
-                                onChange={handleInputChange}
-                            />
-                            <i className="fa-solid fa-pen"></i>
-                            {/* <label htmlFor="ghiChu">Ghi Chú:</label>
-                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea> */}
-                        </div>
 
                     </div>
 
@@ -337,7 +320,6 @@ const Search = () => {
                             <p> Địa chỉ: {thongTinDatHang.diaChi === '' ? diaChi : thongTinDatHang.diaChi}</p>
                         </div> */}
 
-
                         <div className="thanhToanItem noBorder">
                             <p>Hình thức thanh toán:</p>
                             <div className="hinhThucThanhToan">
@@ -352,6 +334,27 @@ const Search = () => {
                                 </select>
                             </div>
                         </div>
+
+
+                        <div className="inputItem">
+                            <input
+                                id="ghiChu"
+                                name="ghiChu"
+                                type="text"
+                                value={
+                                    thongTinDatHang.ghiChu
+                                }
+                                placeholder="Ghi chú"
+
+                                onChange={handleInputChange}
+                            />
+                            <i className="fa-solid fa-pen"></i>
+                            {/* <label htmlFor="ghiChu">Ghi Chú:</label>
+                        <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea> */}
+                        </div>
+
+
+
 
 
                         <div
