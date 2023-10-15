@@ -237,7 +237,7 @@ const Search = () => {
                     <button type="button" className="close" onClick={handleDangHangNgay}>
                         Đóng
                     </button>
-                    <h3>Thông tin khách hàng</h3>
+                    <h3>Thông tin đặt hàng</h3>
                     <div className="tenNguoiDung">
                         <div className="inputItem">
                             <input
