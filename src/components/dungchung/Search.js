@@ -30,17 +30,22 @@ const Search = () => {
         ghiChu: "",
         hinhThucTT: "",
     });
+    const [diaChi, setDiaChi] = useState([])
     useEffect(() => {
+        setDiaChi(user.diaChi)
+
         setThongTinDatHang({
             tenKhachHang: user.tenNguoiDung,
             soDt: user.soDt?.replace("+84", "0"),
-            diaChi: user.diaChi,
+            diaChi: "",
             ghiChu: "",
             hinhThucTT: "tiền mặt",
         });
+
     }, [user]);
 
     console.log(thongTinDatHang);
+
 
     const sumSoLuong = gioHang.reduce((total, item) => {
         return total + item.soLuong;
@@ -53,10 +58,7 @@ const Search = () => {
         phiShip = 0
     }
 
-    const [hinhThucTT, setHinhThucTT] = useState("tiền mặt");
-    const handleHinhThucTT = (event) => {
-        setHinhThucTT(event.target.value);
-    };
+
 
     const [showGioHang, setShowGioHang] = useState(false);
     const handleGioHang = () => {
@@ -95,6 +97,12 @@ const Search = () => {
     };
 
     const handleXacNhanDonHang = () => {
+        if (thongTinDatHang.diaChi === '') {
+            setThongTinDatHang((prevState) => ({
+                ...prevState,
+                diaChi: diaChi[0]
+            }))
+        }
         const dataDonHang = {
             // user,
             gioHang,
@@ -109,6 +117,7 @@ const Search = () => {
 
     const handleInputChange = (event) => {
         const { id, value } = event.target;
+
         setThongTinDatHang((prevState) => ({
             ...prevState,
             [id]: value,
@@ -254,20 +263,30 @@ const Search = () => {
                             <i className="fa-solid fa-phone"></i>
                         </div>
                         <div className="inputItem">
+
                             <input
-                                id="diaChi"
+                                list="listDiaChi"
                                 name="diaChi"
-                                type="text"
-                                value={
-                                    thongTinDatHang.diaChi
-                                }
+                                id="diaChi"
+                                // defaultValue={diaChi[0]}
+                                placeholder="Địa chỉ nhận hàng"
                                 onChange={handleInputChange}
                             />
+
+                            <datalist id="listDiaChi">
+                                {
+                                    diaChi?.map((item, index) => {
+                                        return <option value={item} key={index} />
+                                    })
+                                }
+                            </datalist>
+
+
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
                     </div>
                     <div className="ghiChu">
-                        <label htmlFor="ghiChu">Ghi Chú</label>
+                        <label htmlFor="ghiChu">Ghi Chú:</label>
                         <textarea name="ghiChu" id="ghiChu" cols="50" rows="3" onChange={handleInputChange}></textarea>
                     </div>
 
@@ -279,7 +298,7 @@ const Search = () => {
                         </div>
                         <div className="thanhToanItem">
                             <span>Phí ship: </span>
-                            <p> {phiShip.toLocaleString() + "đ"} </p>
+                            <p> {phiShip > 0 ? phiShip.toLocaleString() + "đ" : "Miễn phí"} </p>
                         </div>
                         <div className="thanhToanItem">
                             <span>
@@ -289,7 +308,7 @@ const Search = () => {
                                 <b>{(sumThanhTien + phiShip).toLocaleString() + "đ"}</b>{" "}
                             </p>
                         </div>
-                        <div className="thanhToanItem">
+                        <div className="thanhToanItem noBorder">
                             <p>Hình thức thanh toán:</p>
                             <div className="hinhThucThanhToan">
                                 <select

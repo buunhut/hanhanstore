@@ -290,7 +290,7 @@
 
       button.close {
         position: absolute;
-        top: 10px;
+        top: 15px;
         left: 10px;
         padding: 5px 10px;
         font-size: 16px;
@@ -358,6 +358,9 @@
           align-items: center;
           justify-content: space-between;
           gap: 10px;
+          border-bottom: 1px solid rgb(195, 195, 195);
+          padding: 5px;
+
           p {
             display: block;
             text-align: right;
@@ -387,6 +390,9 @@
             //   cursor: pointer; /* Add a pointer cursor for better user interaction */
             // }
           }
+        }
+        .noBorder {
+          border-bottom: none;
         }
         #thongTinTk {
           margin-top: 20px;

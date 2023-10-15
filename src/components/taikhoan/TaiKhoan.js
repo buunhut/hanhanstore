@@ -231,7 +231,7 @@ const TaiKhoan = () => {
                 const user = {
                     soDt: "+84919317710",
                     tenNguoiDung: "Trương Bửu Lập",
-                    diaChi: "Chợ Cầu Số 2, Hoà Bình, Bạc Liêu",
+                    diaChi: ["Chợ Cầu Số 2, Hoà Bình, Bạc Liêu", "Chung cư Ehome 3, 103 Hồ Học Lãm, Bình Tân", "Ấp 15 VMB, Hoà Bình, Bạc Liêu"],
                     token: "TIGER",
                 };
 
@@ -296,7 +296,7 @@ const TaiKhoan = () => {
                                         </p>
                                         <p className="diaChi">
                                             <i className="fa-solid fa-location-dot"></i>
-                                            {user.diaChi}
+                                            {user.diaChi[0]}
                                         </p>
                                     </div>
                                 </div>
