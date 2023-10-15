@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //giá trị khởi tạo ban đầu, gọi từ backend về
 const initialState = {
-    sanPham: [
+    listSanPham: [
         {
             id: 1,
             hinhAnh:
@@ -13,6 +13,7 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 20,
+            danhMuc: 'đồ ăn'
         },
         {
             id: 2,
@@ -24,6 +25,8 @@ const initialState = {
             gif: 0,
             dvt: ["lon", "thùng"],
             kho: 10,
+            danhMuc: 'đồ uống'
+
         },
         {
             id: 3,
@@ -35,6 +38,8 @@ const initialState = {
             gif: 1,
             dvt: ["bịch"],
             kho: 90,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 4,
@@ -46,6 +51,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 5,
@@ -57,6 +64,8 @@ const initialState = {
             gif: 0,
             dvt: ["bịch"],
             kho: 10,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 6,
@@ -67,6 +76,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 7,
@@ -78,6 +89,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 8,
@@ -89,6 +102,8 @@ const initialState = {
             gif: 1,
             dvt: ["chai"],
             kho: 70,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 9,
@@ -100,6 +115,8 @@ const initialState = {
             gif: 1,
             dvt: ["hộp", "lốc", "thùng"],
             kho: 10,
+            danhMuc: 'đồ uống'
+
         },
         {
             id: 10,
@@ -110,6 +127,8 @@ const initialState = {
             gif: 1,
             dvt: ["hộp", "lốc", "thùng"],
             kho: 10,
+            danhMuc: 'đồ uống'
+
         },
         {
             id: 11,
@@ -121,6 +140,8 @@ const initialState = {
             gif: 1,
             dvt: ["chai"],
             kho: 10,
+            danhMuc: 'đồ gia dụng'
+
         },
         {
             id: 12,
@@ -132,6 +153,8 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 10,
+            danhMuc: 'đồ ăn'
+
         },
         {
             id: 13,
@@ -143,6 +166,8 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 0,
+            danhMuc: 'đồ ăn'
+
         },
         {
             id: 14,
@@ -154,6 +179,8 @@ const initialState = {
             gif: 1,
             dvt: ["lon", "thùng"],
             kho: 50,
+            danhMuc: 'đồ uống'
+
         },
         {
             id: 15,
@@ -165,6 +192,8 @@ const initialState = {
             gif: 1,
             dvt: ["thùng"],
             kho: 40,
+            danhMuc: 'đồ ăn'
+
         },
     ],
 }

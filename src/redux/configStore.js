@@ -6,7 +6,7 @@ import dangNhapSlice from "./dangNhapSlice";
 
 export const store = configureStore({
     reducer: {
-        sanPham: sanPhamSlice,
+        listSanPham: sanPhamSlice,
         gioHang: gioHangSlice,
         timKiem: timKiemSlice,
         dangNhap: dangNhapSlice,
