@@ -33,26 +33,23 @@
     }
     .cart {
       width: 40px;
-      text-align: center;
       color: white;
       position: relative;
       cursor: pointer;
       i {
         font-size: 24px;
       }
-      span {
-        display: block;
-        width: 20px;
-        height: 20px;
+      p {
         text-align: center;
-        line-height: 20px;
         background-color: rgba(255, 255, 255, 0.9);
         color: red;
         position: absolute;
         top: -8px;
-        right: 5px;
+        left: 8px;
+        min-width: 20px;
         font-size: 12px;
-        border-radius: 50%;
+        border-radius: 8px;
+        padding: 2px 3px;
       }
     }
   }

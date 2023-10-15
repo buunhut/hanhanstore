@@ -128,7 +128,7 @@ const Search = () => {
                     {sumSoLuong > 0 ? (
                         <div className="cart" onClick={handleGioHang}>
                             <i className="fa-solid fa-cart-shopping"></i>
-                            <span>{sumSoLuong}</span>
+                            <p>{sumSoLuong.toLocaleString()}</p>
                         </div>
                     ) : null}
                 </div>
