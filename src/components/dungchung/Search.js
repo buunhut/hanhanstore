@@ -10,6 +10,7 @@ import {
 } from "../../redux/gioHangSlice";
 import { login } from "../../redux/dangNhapSlice";
 import { message } from "antd";
+import { lockScroll, unlockScroll } from "../../service";
 
 const Search = () => {
     const dispath = useDispatch();
@@ -20,9 +21,9 @@ const Search = () => {
 
     //lấy dữ liệu từ redex store
     const { isLogin, user } = useSelector((state) => state.dangNhap);
-
     const { gioHang } = useSelector((state) => state.gioHang);
 
+    //tạo thông tin đặt hàng
     const [thongTinDatHang, setThongTinDatHang] = useState({
         tenKhachHang: "",
         soDt: "",
@@ -32,24 +33,14 @@ const Search = () => {
     });
 
     useEffect(() => {
-
         setThongTinDatHang({
             tenKhachHang: user.tenNguoiDung,
             soDt: user.soDt?.replace("+84", "0"),
-            diaChi: "",
+            diaChi: user.diaChi,
             ghiChu: "",
             hinhThucTT: "tiền mặt",
         });
-
     }, [user]);
-
-    console.log(thongTinDatHang);
-
-
-
-
-
-
 
     const sumSoLuong = gioHang.reduce((total, item) => {
         return total + item.soLuong;
@@ -61,8 +52,6 @@ const Search = () => {
     if (sumThanhTien >= 300000) {
         phiShip = 0
     }
-
-
 
     const [showGioHang, setShowGioHang] = useState(false);
     const handleGioHang = () => {
@@ -82,36 +71,29 @@ const Search = () => {
     const handleTangSoLuong = (id) => {
         dispath(tangSoLuong(id));
     };
+
     const handleXoaDatHang = (id) => {
         dispath(xoaDatHang(id));
     };
 
     const [showXacNhan, setShowXacNhan] = useState(false);
 
-    const lockScroll = () => {
-        document.body.style.overflow = "hidden";
-    };
-    const unlockScroll = () => {
-        document.body.style.overflow = "auto";
-    };
-
     const handleDangHangNgay = () => {
         setShowXacNhan(!showXacNhan);
         lockScroll();
     };
 
+    const [alertDiaChi, setAlertDiaChi] = useState(false)
     const handleXacNhanDonHang = () => {
         if (thongTinDatHang.diaChi === '') {
-            setThongTinDatHang((prevState) => ({
-                ...prevState,
-                diaChi: user.diaChi
-            }))
+            setAlertDiaChi(true)
+            return
         }
         const dataDonHang = {
-            // user,
             gioHang,
             thongTinDatHang
         };
+
         dispath(datHangNgay(dataDonHang));
         message.success("Đặt hàng thành công", 3);
 
@@ -120,7 +102,13 @@ const Search = () => {
 
     const handleInputChange = (event) => {
         const { id, value } = event.target;
-
+        if (id === 'diaChi') {
+            if (value === '') {
+                setAlertDiaChi(true)
+            } else {
+                setAlertDiaChi(false)
+            }
+        }
         setThongTinDatHang((prevState) => ({
             ...prevState,
             [id]: value,
@@ -207,7 +195,10 @@ const Search = () => {
                     </table>
                 </div>
                 <div className="bottom">
-                    <p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>
+                    {
+                        sumThanhTien > 0 ? (<p>Tổng: {sumThanhTien.toLocaleString() + "đ"}</p>) : null
+                    }
+
 
                     {
                         isLogin ? (
@@ -271,17 +262,10 @@ const Search = () => {
                                 list="listDiaChi"
                                 name="diaChi"
                                 id="diaChi"
-                                defaultValue={user.diaChi}
+                                defaultValue={thongTinDatHang.diaChi === '' ? user.diaChi : thongTinDatHang.diaChi}
                                 // value={thongTinDatHang.diaChi}
                                 placeholder={"Nhập địa chỉ nhận hàng"}
                                 onChange={handleInputChange}
-                            // onClick={
-                            //     () => setThongTinDatHang((prevState) => ({
-                            //         ...prevState,
-                            //         diaChi: ""
-
-                            //     }))
-                            // }
                             />
 
                             <datalist id="listDiaChi">
@@ -295,6 +279,11 @@ const Search = () => {
 
                             <i className="fa-solid fa-location-dot"></i>
                         </div>
+                        {
+                            alertDiaChi ? (<p>Vui lòng nhập địa chỉ nhận hàng</p>) : null
+                        }
+
+
 
                     </div>
 
