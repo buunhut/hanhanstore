@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import SanPhamItem from "../sanpham/SanPhamItem";
 import { giamSoLuong, tangSoLuong, themGioHang } from "../../redux/gioHangSlice";
 import "./danhmuc.scss";
 
@@ -55,6 +54,10 @@ const DanhMuc = () => {
     return (
         <div id="danhMuc">
             <div className="container">
+                <div className="title">
+                    <i className="fa-solid fa-list"></i><span>Danh mục</span>
+
+                </div>
                 <div id="tabs">
                     <Tabs
                         tabBarStyle={tabStyle}

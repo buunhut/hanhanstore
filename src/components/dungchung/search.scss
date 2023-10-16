@@ -128,6 +128,7 @@
     .main {
       padding: 0 10px 50px;
       height: calc(100vh - 112px);
+      width: 100%;
       overflow: scroll;
       table {
         width: 100%;
@@ -721,6 +722,9 @@
             background-color: rgb(240, 10, 10);
           }
         }
+      }
+      #main.show {
+        width: 100%;
       }
     }
   }

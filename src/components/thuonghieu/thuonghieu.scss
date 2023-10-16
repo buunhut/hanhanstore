@@ -1,0 +1,392 @@
+#thuongHieu {
+  .container {
+    margin: 20px auto;
+    padding: 0 0 60px;
+    .title {
+      i {
+        margin: 10px;
+        font-size: 18px;
+        color: rgb(195, 195, 195);
+      }
+      span {
+        font-size: 18px;
+        font-weight: 500;
+        color: rgb(195, 195, 195);
+      }
+    }
+    .content {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      .sanPhamItem {
+        width: 185px;
+        height: 272px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        position: relative;
+        .hinhAnh {
+          width: 100%;
+          height: 145px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .text {
+          .tenSp {
+            margin-top: 10px;
+            height: 45px;
+            p {
+              font-size: 15px;
+              font-weight: 400;
+            }
+          }
+          .giaSp {
+            display: flex;
+            justify-content: space-between;
+            p.giaGiam {
+              color: red;
+              font-size: 15px;
+              font-weight: 400;
+            }
+            p.giaBan {
+              color: rgb(195, 195, 195);
+              text-decoration: line-through;
+              font-size: 15px;
+              font-weight: 400;
+            }
+          }
+          .tangGiam {
+            margin: 10px auto 0;
+            width: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10;
+            i.giam {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 22px;
+              height: 22px;
+              line-height: 19px;
+              text-align: center;
+              color: rgb(195, 195, 195);
+              cursor: pointer;
+            }
+            p.soLuong {
+              margin: 0 10px;
+              width: 60px;
+              height: 22px;
+              line-height: 22px;
+              padding: 0 10px;
+              background-color: rgb(255, 233, 233);
+              color: black;
+              text-align: center;
+              border-radius: 24px;
+            }
+            i.tang {
+              border: 1px solid rgb(195, 195, 195);
+              border-radius: 50%;
+              width: 22px;
+              height: 22px;
+              line-height: 19px;
+              text-align: center;
+              background-color: rgb(195, 195, 195);
+              color: white;
+              cursor: pointer;
+            }
+          }
+          .addToCart {
+            margin-top: 10px;
+            button {
+              background-color: red;
+              color: white;
+              border: none;
+              height: 24px;
+              width: 100%;
+              border-radius: 24px;
+              font-size: 15px;
+              font-weight: 400;
+              transition: all 0.3s;
+              cursor: pointer;
+              &:hover {
+                background-color: rgb(240, 10, 10);
+              }
+            }
+          }
+          .tamHet {
+            margin-top: 10px;
+            button {
+              background-color: rgb(195, 195, 195);
+              color: white;
+              border: none;
+              height: 24px;
+              width: 100%;
+              border-radius: 24px;
+              font-size: 15px;
+              font-weight: 400;
+            }
+          }
+          .phanTram {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            background-color: red;
+            border-radius: 10px 0 10px 0;
+            p {
+              color: white;
+              text-align: center;
+            }
+          }
+          // .heart {
+          //   position: absolute;
+          //   top: 5px;
+          //   right: 5px;
+          //   cursor: pointer;
+
+          //   i {
+          //     width: 25px;
+          //     height: 25px;
+          //     line-height: 25px;
+          //     text-align: center;
+          //     border-radius: 50%;
+          //     background-color: rgba(192, 192, 192, 0.3);
+          //   }
+          // }
+          .gif {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+
+            i {
+              color: green;
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              text-align: center;
+              border-radius: 50%;
+              background-color: rgba(192, 192, 192, 0.3);
+            }
+          }
+        }
+      }
+    }
+    .ant-tabs-nav {
+      width: 100%;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 62px;
+      z-index: 100;
+      background: white;
+      padding: 0 5px;
+      border-radius: 0 0 8px 8px;
+      .ant-tabs-nav-list {
+        display: flex;
+        align-items: start;
+        gap: 0px;
+        padding: 10px 0;
+        .ant-tabs-tab {
+          margin-left: 5px;
+          background: linear-gradient(to bottom, orange, red);
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          border-radius: 10px;
+
+          .ant-tabs-tab-btn {
+            padding: 5px 10px;
+            white-space: normal; /* Allow text to wrap to the next line */
+            border-radius: 10px;
+            text-align: center; /* Center the text within the button */
+            color: white;
+            text-transform: capitalize;
+            font-size: 14px;
+          }
+        }
+        .ant-tabs-tab-active {
+          background: linear-gradient(to bottom, rgb(34, 14, 255), #469fff);
+          .ant-tabs-tab-btn {
+            // color: #007bff; /* Change to your desired text color */
+            text-align: center; /* Center the text within the button */
+          }
+        }
+      }
+      .ant-tabs-nav-more {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #thuongHieu {
+    .container {
+      .content {
+        width: 380px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #thuongHieu {
+    .container {
+      width: 100%;
+      .content {
+        width: 100%;
+        display: block;
+        .sanPhamItem {
+          margin-top: 10px;
+          width: 100%;
+          height: 150px;
+          padding: 0 10px;
+          background-color: white;
+          border-radius: 10px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          .hinhAnh {
+            width: 110px;
+            height: 110px;
+            padding: 5px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .text {
+            width: 100%;
+            padding: 20px;
+            .tenSp {
+              height: 45px;
+              p {
+                font-size: 14px;
+                font-weight: 500;
+              }
+            }
+            .giaSp {
+              display: flex;
+              justify-content: space-between;
+              p.giaGiam {
+                color: red;
+              }
+              p.giaBan {
+                color: rgb(195, 195, 195);
+                text-decoration: line-through;
+              }
+            }
+            .tangGiam {
+              margin: 10px auto 0;
+              width: 130px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 10;
+              i.giam {
+                border: 1px solid rgb(195, 195, 195);
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                line-height: 17px;
+                text-align: center;
+                color: rgb(195, 195, 195);
+                cursor: pointer;
+              }
+              p.soLuong {
+                margin: 0 10px;
+                width: 60px;
+
+                height: 20px;
+                line-height: 20px;
+                padding: 0 10px;
+                background-color: rgb(255, 233, 233);
+                color: black;
+                text-align: center;
+                border-radius: 20px;
+              }
+              i.tang {
+                border: 1px solid rgb(195, 195, 195);
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                line-height: 17px;
+                text-align: center;
+                background-color: rgb(195, 195, 195);
+                color: white;
+                cursor: pointer;
+              }
+            }
+            .addToCart {
+              margin-top: 10px;
+              button {
+                background-color: red;
+                color: white;
+                border: none;
+                height: 24px;
+                width: 100%;
+                border-radius: 24px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 400;
+                &:hover {
+                  background-color: rgb(240, 10, 10);
+                }
+              }
+            }
+            .phanTram {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 60px;
+              background-color: red;
+              border-radius: 10px 0 10px 0;
+              p {
+                color: white;
+                text-align: center;
+              }
+            }
+            // .heart {
+            //   position: absolute;
+            //   top: 5px;
+            //   right: 5px;
+            //   cursor: pointer;
+
+            //   i {
+            //     width: 25px;
+            //     height: 25px;
+            //     line-height: 25px;
+            //     text-align: center;
+            //     border-radius: 50%;
+            //     background-color: rgba(192, 192, 192, 0.3);
+            //   }
+            // }
+            .gif {
+              position: absolute;
+              top: 5px;
+              right: 5px;
+              cursor: pointer;
+
+              i {
+                color: green;
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: rgba(192, 192, 192, 0.3);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

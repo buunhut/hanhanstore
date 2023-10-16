@@ -13,7 +13,8 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 20,
-            danhMuc: 'đồ ăn'
+            danhMuc: 'đồ ăn',
+            thuongHieu: 'accook'
         },
         {
             id: 2,
@@ -25,7 +26,8 @@ const initialState = {
             gif: 0,
             dvt: ["lon", "thùng"],
             kho: 10,
-            danhMuc: 'đồ uống'
+            danhMuc: 'đồ uống',
+            thuongHieu: 'tiger'
 
         },
         {
@@ -38,7 +40,8 @@ const initialState = {
             gif: 1,
             dvt: ["bịch"],
             kho: 90,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'đồ gia dụng',
+            thuongHieu: 'biên hoà'
 
         },
         {
@@ -51,7 +54,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'nước mắm',
+            thuongHieu: 'thuận phát'
 
         },
         {
@@ -64,7 +68,8 @@ const initialState = {
             gif: 0,
             dvt: ["bịch"],
             kho: 10,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'bột ngọt',
+            thuongHieu: 'vedan'
 
         },
         {
@@ -76,7 +81,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'nước tương',
+            thuongHieu: 'chinsu'
 
         },
         {
@@ -89,7 +95,8 @@ const initialState = {
             gif: 0,
             dvt: ["chai"],
             kho: 10,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'đồ gia dụng',
+            thuongHieu: 'cholimex'
 
         },
         {
@@ -102,7 +109,8 @@ const initialState = {
             gif: 1,
             dvt: ["chai"],
             kho: 70,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'đồ gia dụng',
+            thuongHieu: 'chinsu'
 
         },
         {
@@ -115,7 +123,8 @@ const initialState = {
             gif: 1,
             dvt: ["hộp", "lốc", "thùng"],
             kho: 10,
-            danhMuc: 'đồ uống'
+            danhMuc: 'đồ uống',
+            thuongHieu: 'vinamilk'
 
         },
         {
@@ -127,7 +136,8 @@ const initialState = {
             gif: 1,
             dvt: ["hộp", "lốc", "thùng"],
             kho: 10,
-            danhMuc: 'đồ uống'
+            danhMuc: 'đồ uống',
+            thuongHieu: 'vinamilk'
 
         },
         {
@@ -140,7 +150,8 @@ const initialState = {
             gif: 1,
             dvt: ["chai"],
             kho: 10,
-            danhMuc: 'đồ gia dụng'
+            danhMuc: 'đồ gia dụng',
+            thuongHieu: 'chinsu'
 
         },
         {
@@ -153,7 +164,8 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 10,
-            danhMuc: 'đồ ăn'
+            danhMuc: 'đồ ăn',
+            thuongHieu: 'accook'
 
         },
         {
@@ -166,7 +178,8 @@ const initialState = {
             gif: 1,
             dvt: ["gói", "thùng"],
             kho: 0,
-            danhMuc: 'đồ ăn'
+            danhMuc: 'đồ ăn',
+            thuongHieu: 'accook'
 
         },
         {
@@ -179,7 +192,8 @@ const initialState = {
             gif: 1,
             dvt: ["lon", "thùng"],
             kho: 50,
-            danhMuc: 'đồ uống'
+            danhMuc: 'đồ uống',
+            thuongHieu: 'heineken'
 
         },
         {
@@ -192,8 +206,8 @@ const initialState = {
             gif: 1,
             dvt: ["thùng"],
             kho: 40,
-            danhMuc: 'đồ ăn'
-
+            danhMuc: 'đồ ăn',
+            thuongHieu: 'accook'
         },
     ],
 }
