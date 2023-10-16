@@ -61,7 +61,7 @@ const DanhMuc = () => {
                 <div id="tabs">
                     <Tabs
                         tabBarStyle={tabStyle}
-                        tabPosition={"top"}
+                        tabPosition={"left"}
                         items={listSanPhamTheoDanhMuc.map((item, index) => {
                             let { sanPham } = item;
                             return {

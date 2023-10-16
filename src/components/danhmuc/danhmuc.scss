@@ -4,7 +4,7 @@
     padding: 0 0 60px;
     .title {
       i {
-        margin: 10px;
+        margin-bottom: 10px;
         font-size: 18px;
         color: rgb(195, 195, 195);
       }
@@ -175,50 +175,57 @@
         }
       }
     }
-    .ant-tabs-nav {
-      width: 100%;
-      margin-bottom: 20px;
-      position: sticky;
-      top: 62px;
-      z-index: 100;
-      background: white;
-      padding: 0 5px;
-      border-radius: 0 0 8px 8px;
-      .ant-tabs-nav-list {
-        display: flex;
-        align-items: start;
-        gap: 0px;
-        padding: 10px 0;
-        .ant-tabs-tab {
-          margin-left: 5px;
-          background: linear-gradient(to bottom, orange, red);
-          padding: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          border-radius: 10px;
 
-          .ant-tabs-tab-btn {
-            padding: 5px 10px;
-            white-space: normal; /* Allow text to wrap to the next line */
-            border-radius: 10px;
-            text-align: center; /* Center the text within the button */
-            color: white;
-            text-transform: capitalize;
-            font-size: 14px;
+    #tabs {
+      .ant-tabs {
+        background-color: white;
+        .ant-tabs-nav {
+          background-color: whitesmoke;
+          width: 100px;
+          padding: 0;
+          margin: 0;
+          .ant-tabs-nav-wrap {
+            &::before {
+              display: none;
+            }
+            &::after {
+              display: none;
+            }
+            margin: 0;
+            padding: 0;
+
+            // background-color: blue;
+            .ant-tabs-nav-list {
+              padding: 10px;
+              margin: 0;
+              .ant-tabs-tab {
+                color: white;
+                height: 80px;
+                width: 80px;
+                border-radius: 50%;
+                // background-color: red;
+                background: linear-gradient(to bottom, orange, red);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                white-space: normal;
+                padding: 5px;
+                .ant-tabs-tab-btn {
+                  // background-color: blue;
+                }
+              }
+              .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+                color: yellow; /* Change to your desired text color for the active tab */
+              }
+              .ant-tabs-ink-bar {
+                background-color: red; // Đặt màu cho thanh sáng khi tab được chọn
+                position: absolute;
+                left: 0;
+              }
+            }
           }
         }
-        .ant-tabs-tab-active {
-          background: linear-gradient(to bottom, rgb(34, 14, 255), #469fff);
-          .ant-tabs-tab-btn {
-            // color: #007bff; /* Change to your desired text color */
-            text-align: center; /* Center the text within the button */
-          }
-        }
-      }
-      .ant-tabs-nav-more {
-        display: none;
       }
     }
   }
