@@ -10,7 +10,7 @@ import {
 
 const TimKiem = () => {
     const dispath = useDispatch();
-    const { sanPham } = useSelector((state) => state.sanPham);
+    const { listSanPham } = useSelector((state) => state.listSanPham);
     const { gioHang } = useSelector((state) => state.gioHang);
 
     const [keyword, setKeyword] = useState("");
@@ -37,7 +37,7 @@ const TimKiem = () => {
         setKeyword(event.target.innerText);
 
         const value = event.target.innerText;
-        const result = sanPham.filter((item) => {
+        const result = listSanPham.filter((item) => {
             return boDauTiengViet(item.tenSp).includes(boDauTiengViet(value));
         });
         setKetQuaTimKiem(result);
@@ -53,7 +53,7 @@ const TimKiem = () => {
         } else {
             setKeyword(event.target.value);
 
-            const result = sanPham.filter((item) => {
+            const result = listSanPham.filter((item) => {
                 return boDauTiengViet(item.tenSp).includes(boDauTiengViet(keyword));
             });
             setKetQuaTimKiem(result);
