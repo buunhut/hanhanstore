@@ -1,6 +1,6 @@
 #danhMuc {
   .container {
-    margin: 30px auto;
+    margin: 10px auto;
     padding-bottom: 60px;
     .content {
       display: flex;
@@ -165,17 +165,20 @@
     }
     .ant-tabs-nav {
       width: 100%;
+      margin-bottom: 0;
+      position: sticky;
+      top: 62px;
+      z-index: 700;
+      background: white;
+      padding: 0 5px;
+      border-radius: 0 0 8px 8px;
       .ant-tabs-nav-list {
         display: flex;
-        // justify-content: center;
         align-items: start;
         gap: 0px;
-        height: 60px;
+        padding: 10px 0;
         .ant-tabs-tab {
-          width: 80px;
-          height: 50px;
           margin-left: 5px;
-          // height: 80px;
           background: linear-gradient(to bottom, orange, red);
           padding: 0;
           display: flex;
@@ -185,13 +188,13 @@
           border-radius: 10px;
 
           .ant-tabs-tab-btn {
-            padding: 3px; /* Adjust the padding to control the button size */
+            padding: 5px 10px;
             white-space: normal; /* Allow text to wrap to the next line */
-            // border: 1px solid rgb(195, 195, 195);
             border-radius: 10px;
             text-align: center; /* Center the text within the button */
             color: white;
             text-transform: capitalize;
+            font-size: 14px;
           }
         }
         .ant-tabs-tab-active {
