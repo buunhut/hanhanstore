@@ -44,17 +44,25 @@ const DanhMuc = () => {
     };
 
 
+
+    const tabStyle = {
+        //help me code here
+    };
+
+
+    const { TabPane } = Tabs;
+
     return (
         <div id="danhMuc">
             <div className="container">
-
                 <div id="tabs">
                     <Tabs
-                        tabPosition={"left"}
+                        tabBarStyle={tabStyle}
+                        tabPosition={"top"}
                         items={listSanPhamTheoDanhMuc.map((item, index) => {
                             let { sanPham } = item;
                             return {
-                                label: item.danhMuc,
+                                label: item.danhMuc.toLocaleUpperCase(),
                                 key: index,
                                 children: (
                                     <div className="content">
@@ -69,10 +77,7 @@ const DanhMuc = () => {
                                                 let sanPhamInCart = gioHang.find((item) => item.id === id);
 
                                                 let phanTram = ((giaGiam * 100) / giaBan - 100).toFixed(1);
-
                                                 return (
-
-
                                                     <div className="sanPhamItem" key={id}>
                                                         <div className="hinhAnh">
                                                             <img src={hinhAnh} alt="" />
@@ -131,25 +136,15 @@ const DanhMuc = () => {
                                                             ) : null}
                                                         </div>
                                                     </div>
-
-
-
                                                 )
                                             })
                                         }
                                     </div>
-
-
-
-
-
-
-
-
                                 ),
                             };
                         })}
                     />
+
                 </div>
             </div>
         </div>
