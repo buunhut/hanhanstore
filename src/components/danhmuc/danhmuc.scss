@@ -1,7 +1,7 @@
 #danhMuc {
   .container {
-    margin: 10px auto;
-    padding-bottom: 60px;
+    margin: 20px auto;
+    padding: 0 0 60px;
     .content {
       display: flex;
       gap: 10px;
@@ -165,7 +165,7 @@
     }
     .ant-tabs-nav {
       width: 100%;
-      margin-bottom: 0;
+      margin-bottom: 15px;
       position: sticky;
       top: 62px;
       z-index: 700;
