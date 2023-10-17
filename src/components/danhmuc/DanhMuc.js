@@ -49,15 +49,13 @@ const DanhMuc = () => {
     };
 
 
-    const { TabPane } = Tabs;
 
     return (
         <div id="danhMuc">
             <div className="container">
-                <div className="title">
+                {/* <div className="title">
                     <i className="fa-solid fa-list"></i><span>Danh mục</span>
-
-                </div>
+                </div> */}
                 <div id="tabs">
                     <Tabs
                         tabBarStyle={tabStyle}
@@ -65,7 +63,10 @@ const DanhMuc = () => {
                         items={listSanPhamTheoDanhMuc.map((item, index) => {
                             let { sanPham } = item;
                             return {
-                                label: item.danhMuc.toLocaleUpperCase(),
+                                label: <div className="hinhAnh">
+                                    <img src="" alt="" />
+                                    <p>{item.danhMuc}</p>
+                                </div>,
                                 key: index,
                                 children: (
                                     <div className="content">
