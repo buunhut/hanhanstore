@@ -25,6 +25,16 @@
         font-size: 14px;
       }
     }
+    .active {
+      .footerItem {
+        i {
+          color: red;
+        }
+        p {
+          color: red;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 400px) {
