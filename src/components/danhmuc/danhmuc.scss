@@ -452,10 +452,9 @@
             width: 80px;
             padding: 0;
             margin: 0;
-            position: absolute; // Đặt thành phần là cố định khi cuộn chuột
+            position: fixed; // Đặt thành phần là cố định khi cuộn chuột
             top: 62px; // Khoảng cách từ top khi cố định
             bottom: 50px;
-            height: calc(100vh - 112px);
             overflow-y: scroll;
             // z-index: 100;
             .ant-tabs-nav-wrap {
@@ -706,12 +705,10 @@
             width: 80px;
             padding: 0;
             margin: 0;
-            position: absolute; // Đặt thành phần là cố định khi cuộn chuột
+            position: fixed; // Đặt thành phần là cố định khi cuộn chuột
             top: 62px; // Khoảng cách từ top khi cố định
             bottom: 50px;
-            height: calc(100vh - 112px);
             overflow-y: scroll;
-            z-index: 200;
 
             .ant-tabs-nav-wrap {
               // background-color: blue;
