@@ -14,7 +14,7 @@ const initialState = {
             dvt: ["gói", "thùng"],
             kho: 20,
             danhMuc: 'đồ ăn',
-            thuongHieu: 'accook'
+            thuongHieu: 'acecook'
         },
         {
             id: 2,
@@ -165,7 +165,7 @@ const initialState = {
             dvt: ["gói", "thùng"],
             kho: 10,
             danhMuc: 'đồ ăn',
-            thuongHieu: 'accook'
+            thuongHieu: 'acecook'
 
         },
         {
@@ -179,7 +179,7 @@ const initialState = {
             dvt: ["gói", "thùng"],
             kho: 0,
             danhMuc: 'đồ ăn',
-            thuongHieu: 'accook'
+            thuongHieu: 'acecook'
 
         },
         {
@@ -207,7 +207,7 @@ const initialState = {
             dvt: ["thùng"],
             kho: 40,
             danhMuc: 'đồ ăn',
-            thuongHieu: 'accook'
+            thuongHieu: 'acecook'
         },
     ],
 }
