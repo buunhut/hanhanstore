@@ -49,6 +49,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding: 10px 0;
                 .ant-tabs-tab-btn {
                   .hinhAnh {
                     display: flex;
@@ -56,6 +57,7 @@
                     justify-content: center;
                     flex-wrap: wrap;
                     img {
+                      margin-top: 5px;
                       width: 60px;
                       height: 60px;
                       border-radius: 50%;
@@ -70,6 +72,11 @@
                   }
                 }
               }
+              .ant-tabs-tab.ant-tabs-tab-active {
+                background-color: rgba(255, 255, 192, 0.3);
+                padding: 10px 0;
+              }
+
               .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
                 .hinhAnh {
                   p {
