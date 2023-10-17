@@ -36,7 +36,6 @@
           bottom: 50px;
           height: calc(100vh - 112px);
           overflow-y: scroll;
-          z-index: 200;
 
           .ant-tabs-nav-wrap {
             .ant-tabs-nav-list {
@@ -465,7 +464,6 @@
             top: 62px; // Khoảng cách từ top khi cố định
             bottom: 50px;
             overflow-y: scroll;
-            // z-index: 100;
             .ant-tabs-nav-wrap {
               // background-color: blue;
               .ant-tabs-nav-list {
